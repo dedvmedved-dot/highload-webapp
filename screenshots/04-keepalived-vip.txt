@@ -1,0 +1,2 @@
+sk@skhome01:~/highload-webapp$ ssh ubuntu@192.168.122.7 ip a | grep 192.168.122.100
+    inet 192.168.122.100/24 scope global secondary ens3

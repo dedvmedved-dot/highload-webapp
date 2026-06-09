@@ -1,0 +1,8 @@
+sk@skhome01:~/highload-webapp$ echo === Write on backend-1 ===
+=== Write on backend-1 ===
+sk@skhome01:~/highload-webapp$ ssh ubuntu@192.168.122.238 sudo sh -c "echo GFS2-CLUSTER-OK > /mnt/gfs2_static/TEST.txt"
+GFS2-CLUSTER-OK
+sk@skhome01:~/highload-webapp$ echo === Read on backend-2 ===
+=== Read on backend-2 ===
+sk@skhome01:~/highload-webapp$ ssh ubuntu@192.168.122.75 sudo cat /mnt/gfs2_static/TEST.txt
+GFS2-CLUSTER-OK

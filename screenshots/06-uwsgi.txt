@@ -1,0 +1,16 @@
+sk@skhome01:~/highload-webapp$ ssh ubuntu@192.168.122.238 systemctl status uwsgi --no-pager | head -15
+● uwsgi.service - uWSGI Django App
+     Loaded: loaded (/etc/systemd/system/uwsgi.service; enabled; vendor preset: enabled)
+     Active: active (running) since Tue 2026-06-09 20:51:45 UTC; 9min ago
+   Main PID: 574 (uwsgi)
+      Tasks: 5 (limit: 2215)
+     Memory: 45.5M
+        CPU: 247ms
+     CGroup: /system.slice/uwsgi.service
+             ├─574 /opt/django-app/venv/bin/uwsgi --ini /opt/django-app/uwsgi.ini
+             ├─661 /opt/django-app/venv/bin/uwsgi --ini /opt/django-app/uwsgi.ini
+             ├─662 /opt/django-app/venv/bin/uwsgi --ini /opt/django-app/uwsgi.ini
+             ├─663 /opt/django-app/venv/bin/uwsgi --ini /opt/django-app/uwsgi.ini
+             └─664 /opt/django-app/venv/bin/uwsgi --ini /opt/django-app/uwsgi.ini
+
+Jun 09 20:51:45 ubuntu uwsgi[574]: your mercy for graceful operations on workers is 60 seconds

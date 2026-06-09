@@ -1,0 +1,13 @@
+sk@skhome01:~/highload-webapp$ echo === Destroy backend-1 ===
+=== Destroy backend-1 ===
+sk@skhome01:~/highload-webapp$ virsh destroy backend-1
+Domain backend-1 destroyed
+sk@skhome01:~/highload-webapp$ curl -s http://192.168.122.100/ | head -3
+sk@skhome01:~/highload-webapp$ virsh start backend-1
+Domain backend-1 started
+sk@skhome01:~/highload-webapp$ curl -s http://192.168.122.100/ | head -3
+
+<!doctype html>
+
+sk@skhome01:~/highload-webapp$ virsh start backend-1
+Domain backend-1 started

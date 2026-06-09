@@ -1,0 +1,71 @@
+---
+- name: Установка пакетов
+  apt:
+    name:
+      - python3-pip
+      - python3-venv
+      - uwsgi
+      - uwsgi-plugin-python3
+    state: present
+    update_cache: yes
+
+- name: Создание директории приложения
+  file:
+    path: /opt/django-app
+    state: directory
+    owner: ubuntu
+    group: ubuntu
+
+- name: Создание виртуального окружения
+  pip:
+    name:
+      - django
+      - uwsgi
+    virtualenv: /opt/django-app/venv
+    virtualenv_command: python3 -m venv
+
+- name: Создание Django проекта
+  shell: |
+    cd /opt/django-app
+    ./venv/bin/django-admin startproject webapp .
+  args:
+    creates: /opt/django-app/manage.py
+  become_user: ubuntu
+
+- name: Настройка ALLOWED_HOSTS
+  lineinfile:
+    path: /opt/django-app/webapp/settings.py
+    regexp: '^ALLOWED_HOSTS'
+    line: 'ALLOWED_HOSTS = ["*"]'
+
+- name: Настройка static root на GFS2
+  lineinfile:
+    path: /opt/django-app/webapp/settings.py
+    regexp: '^STATIC_ROOT'
+    line: 'STATIC_ROOT = "/mnt/gfs2_static/static/"'
+
+- name: Создание static директории на GFS2
+  file:
+    path: /mnt/gfs2_static/static
+    state: directory
+    owner: ubuntu
+    group: ubuntu
+
+- name: Копирование конфига uWSGI
+  template:
+    src: uwsgi.ini.j2
+    dest: /opt/django-app/uwsgi.ini
+  notify: restart uwsgi
+
+- name: Копирование systemd unit
+  template:
+    src: uwsgi.service.j2
+    dest: /etc/systemd/system/uwsgi.service
+  notify: restart uwsgi
+
+- name: Запуск uWSGI
+  systemd:
+    name: uwsgi
+    state: started
+    enabled: yes
+    daemon_reload: yes

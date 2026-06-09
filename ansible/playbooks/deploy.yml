@@ -1,0 +1,22 @@
+---
+- hosts: iscsi
+  become: yes
+  roles:
+    - roles/iscsi-target
+
+- hosts: backend
+  become: yes
+  serial: 1
+  roles:
+    - roles/gfs2
+    - roles/backend
+
+- hosts: nginx
+  become: yes
+  roles:
+    - roles/nginx
+
+- hosts: db
+  become: yes
+  roles:
+    - roles/db

@@ -1,0 +1,40 @@
+---
+- name: Установка Nginx и Keepalived
+  apt:
+    name:
+      - nginx
+      - keepalived
+    state: present
+    update_cache: yes
+
+- name: Настройка Nginx как балансировщика
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/default
+  notify: reload nginx
+
+- name: Включение сайта
+  file:
+    src: /etc/nginx/sites-available/default
+    dest: /etc/nginx/sites-enabled/default
+    state: link
+
+- name: Настройка Keepalived MASTER
+  template:
+    src: keepalived-master.conf.j2
+    dest: /etc/keepalived/keepalived.conf
+  when: inventory_hostname == 'nginx-1'
+  notify: restart keepalived
+
+- name: Настройка Keepalived BACKUP
+  template:
+    src: keepalived-backup.conf.j2
+    dest: /etc/keepalived/keepalived.conf
+  when: inventory_hostname == 'nginx-2'
+  notify: restart keepalived
+
+- name: Запуск Keepalived
+  systemd:
+    name: keepalived
+    state: started
+    enabled: yes

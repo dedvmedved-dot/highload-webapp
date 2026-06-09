@@ -1,0 +1,40 @@
+---
+- name: Установка iSCSI target
+  apt:
+    name:
+      - tgt
+      - lvm2
+    state: present
+    update_cache: yes
+
+- name: Создание LVM тома на /dev/vdb
+  lvg:
+    vg: vg_iscsi
+    pvs: /dev/vdb
+  ignore_errors: yes
+
+- name: Создание логического тома
+  lvol:
+    vg: vg_iscsi
+    lv: lv_static
+    size: 4G
+  ignore_errors: yes
+
+- name: Настройка iSCSI target
+  copy:
+    dest: /etc/tgt/conf.d/gfs2.conf
+    content: |
+      <target iqn.2026-06.local.gfs2:storage>
+        backing-store /dev/vg_iscsi/lv_static
+        initiator-address 192.168.122.0/24
+        incominguser iscsi-user iscsi-pass
+      </target>
+
+- name: Перезапуск tgt
+  systemd:
+    name: tgt
+    state: restarted
+    enabled: yes
+
+- name: Открытие порта 3260
+  shell: iptables -A INPUT -p tcp --dport 3260 -j ACCEPT 2>/dev/null || true

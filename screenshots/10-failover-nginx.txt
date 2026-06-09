@@ -1,0 +1,18 @@
+sk@skhome01:~/highload-webapp$ echo === Destroy nginx-1 ===
+=== Destroy nginx-1 ===
+sk@skhome01:~/highload-webapp$ virsh destroy nginx-1
+Domain nginx-1 destroyed
+sk@skhome01:~/highload-webapp$ ssh ubuntu@192.168.122.214 ip a | grep 192.168.122.100
+    inet 192.168.122.100/24 scope global secondary ens3
+sk@skhome01:~/highload-webapp$ curl -s http://192.168.122.100/ | head -3
+
+<!doctype html>
+
+sk@skhome01:~/highload-webapp$ virsh start nginx-1
+Domain nginx-1 started
+sk@skhome01:~/highload-webapp$ curl -s http://192.168.122.100/ | head -3
+
+<!doctype html>
+
+sk@skhome01:~/highload-webapp$ virsh start nginx-1
+Domain nginx-1 started

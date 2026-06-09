@@ -1,0 +1,9 @@
+[uwsgi]
+module = webapp.wsgi:application
+master = true
+processes = 4
+http-socket = 0.0.0.0:8000
+chdir = /opt/django-app
+home = /opt/django-app/venv
+vacuum = true
+die-on-term = true

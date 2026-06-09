@@ -1,0 +1,45 @@
+---
+- name: Установка PostgreSQL
+  apt:
+    name:
+      - postgresql
+      - postgresql-contrib
+      - python3-psycopg2
+    state: present
+    update_cache: yes
+
+- name: Запуск PostgreSQL
+  systemd:
+    name: postgresql
+    state: started
+    enabled: yes
+
+- name: Создание базы данных
+  shell: sudo -u postgres psql -c "CREATE DATABASE django_db;" 2>/dev/null || true
+
+- name: Создание пользователя БД
+  shell: sudo -u postgres psql -c "CREATE USER django_user WITH PASSWORD 'django_pass';" 2>/dev/null || true
+
+- name: Выдача прав пользователю
+  shell: sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE django_db TO django_user;" 2>/dev/null || true
+
+- name: Дополнительные права на схему
+  shell: sudo -u postgres psql -d django_db -c "GRANT ALL ON SCHEMA public TO django_user;" 2>/dev/null || true
+
+- name: Настройка прослушивания всех адресов
+  lineinfile:
+    path: /etc/postgresql/14/main/postgresql.conf
+    regexp: "^#?listen_addresses"
+    line: "listen_addresses = '*'"
+  notify: restart postgresql
+
+- name: Разрешение подключений от backend
+  lineinfile:
+    path: /etc/postgresql/14/main/pg_hba.conf
+    line: 'host all django_user 192.168.122.0/24 md5'
+  notify: restart postgresql
+
+- name: Перезапуск PostgreSQL
+  systemd:
+    name: postgresql
+    state: restarted

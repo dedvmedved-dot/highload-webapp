@@ -1,0 +1,21 @@
+sk@skhome01:~/highload-webapp$ ssh ubuntu@192.168.122.111 sudo tgtadm --mode target --op show | head -20
+Target 1: iqn.2026-06.local.gfs2:storage
+    System information:
+        Driver: iscsi
+        State: ready
+    I_T nexus information:
+        I_T nexus: 6
+            Initiator: iqn.2004-10.com.ubuntu:01:d164e4f088aa alias: ubuntu
+            Connection: 0
+                IP Address: 192.168.122.75
+        I_T nexus: 7
+            Initiator: iqn.2004-10.com.ubuntu:01:168f1d5f36ef alias: ubuntu
+            Connection: 0
+                IP Address: 192.168.122.238
+        I_T nexus: 8
+            Initiator: iqn.2004-10.com.ubuntu:01:d164e4f088aa alias: ubuntu
+            Connection: 0
+                IP Address: 192.168.122.75
+    LUN information:
+        LUN: 0
+            Type: controller

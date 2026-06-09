@@ -1,0 +1,6 @@
+sk@skhome01:~/highload-webapp$ curl -s http://192.168.122.100/ | head -5
+
+<!doctype html>
+
+<html lang="en-us" dir="ltr">
+  <head>

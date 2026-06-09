@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI Django App
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/opt/django-app
+ExecStart=/opt/django-app/venv/bin/uwsgi --ini /opt/django-app/uwsgi.ini
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,114 @@
+---
+- name: Установка полного ядра для поддержки GFS2
+  apt:
+    name:
+      - linux-image-generic
+    state: present
+    update_cache: yes
+  register: kernel_install
+
+- name: Перезагрузка после обновления ядра
+  reboot:
+    reboot_timeout: 120
+  when: kernel_install.changed
+
+- name: Установка пакетов для GFS2 и кластера
+  apt:
+    name:
+      - gfs2-utils
+      - dlm-controld
+      - corosync
+      - pacemaker
+      - pcs
+      - fence-agents
+      - open-iscsi
+      - lvm2
+    state: present
+    update_cache: yes
+
+- name: Загрузка модулей ядра
+  modprobe:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - dlm
+    - gfs2
+
+- name: Сохранение модулей в /etc/modules
+  lineinfile:
+    path: /etc/modules
+    line: "{{ item }}"
+  loop:
+    - dlm
+    - gfs2
+
+- name: Запуск DLM
+  systemd:
+    name: dlm
+    state: started
+    enabled: yes
+
+- name: Настройка пароля для hacluster
+  shell: echo "hacluster:clusterpass" | sudo chpasswd
+
+- name: Запуск pcsd
+  systemd:
+    name: pcsd
+    state: started
+    enabled: yes
+
+- name: Добавление хостов в /etc/hosts
+  lineinfile:
+    path: /etc/hosts
+    line: "192.168.122.238 backend-1"
+  when: inventory_hostname == 'backend-1' or inventory_hostname == 'backend-2'
+
+- name: Добавление backend-2 в /etc/hosts
+  lineinfile:
+    path: /etc/hosts
+    line: "192.168.122.75 backend-2"
+  when: inventory_hostname == 'backend-1' or inventory_hostname == 'backend-2'
+
+- name: Открытие порта 3260 для iSCSI
+  shell: iptables -A INPUT -p tcp --dport 3260 -j ACCEPT 2>/dev/null || true
+
+- name: Обнаружение iSCSI target
+  shell: iscsiadm -m discovery -t st -p 192.168.122.111 2>/dev/null || true
+
+- name: Настройка аутентификации iSCSI
+  shell: |
+    iscsiadm -m node -T iqn.2026-06.local.gfs2:storage -p 192.168.122.111 -o update -n node.session.auth.authmethod -v CHAP 2>/dev/null || true
+    iscsiadm -m node -T iqn.2026-06.local.gfs2:storage -p 192.168.122.111 -o update -n node.session.auth.username -v iscsi-user 2>/dev/null || true
+    iscsiadm -m node -T iqn.2026-06.local.gfs2:storage -p 192.168.122.111 -o update -n node.session.auth.password -v iscsi-pass 2>/dev/null || true
+
+- name: Подключение к iSCSI target
+  shell: iscsiadm -m node -T iqn.2026-06.local.gfs2:storage -p 192.168.122.111 -l 2>/dev/null || true
+
+- name: Обновление устройств
+  shell: sudo udevadm trigger && sudo partprobe && sleep 3
+
+- name: Создание GFS2 файловой системы (только на backend-1)
+  shell: |
+    if [ -b /dev/sda ] && ! blkid /dev/sda | grep -q gfs2; then
+      echo y | mkfs.gfs2 -p lock_dlm -t gfs2-cluster:gfs2 -j 2 /dev/sda
+    fi
+  when: inventory_hostname == 'backend-1'
+
+- name: Создание точки монтирования
+  file:
+    path: /mnt/gfs2_static
+    state: directory
+
+- name: Монтирование GFS2
+  mount:
+    path: /mnt/gfs2_static
+    src: /dev/sda
+    fstype: gfs2
+    opts: defaults
+    state: mounted
+  ignore_errors: yes
+
+- name: Настройка автоматического монтирования через /etc/fstab
+  lineinfile:
+    path: /etc/fstab
+    line: '/dev/sda /mnt/gfs2_static gfs2 defaults,_netdev 0 0'

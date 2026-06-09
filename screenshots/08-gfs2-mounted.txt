@@ -1,0 +1,8 @@
+sk@skhome01:~/highload-webapp$ echo === backend-1 ===
+=== backend-1 ===
+sk@skhome01:~/highload-webapp$ ssh ubuntu@192.168.122.238 df -h | grep gfs2
+/dev/sda        4.0G   67M  4.0G   2% /mnt/gfs2_static
+sk@skhome01:~/highload-webapp$ echo === backend-2 ===
+=== backend-2 ===
+sk@skhome01:~/highload-webapp$ ssh ubuntu@192.168.122.75 df -h | grep gfs2
+/dev/sda        4.0G   67M  4.0G   2% /mnt/gfs2_static

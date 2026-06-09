@@ -1,0 +1,25 @@
+sk@skhome01:~/highload-webapp/ansible$ ansible all -i inventory.ini -m ping
+nginx-1 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+db-1 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+backend-2 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+backend-1 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+nginx-2 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+iscsi-target | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}

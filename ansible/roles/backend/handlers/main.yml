@@ -1,0 +1,11 @@
+---
+- name: restart uwsgi
+  systemd:
+    name: uwsgi
+    state: restarted
+    daemon_reload: yes
+
+- name: restart nfs
+  systemd:
+    name: nfs-kernel-server
+    state: restarted

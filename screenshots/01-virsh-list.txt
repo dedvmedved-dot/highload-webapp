@@ -1,0 +1,10 @@
+sk@skhome01:~/highload-webapp$ virsh list --all
+ Id   Name           State
+------------------------------
+ 11   nginx-2        running
+ 13   db-1           running
+ 15   iscsi-target   running
+ 20   nginx-1        running
+ 21   backend-1      running
+ 22   backend-2      running
+
