@@ -1,0 +1,102 @@
+<svg width="504pt" height="611pt" viewBox="0.00 0.00 504.00 611.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 607.07)">
+<title>FailoverTesting</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-607.07 499.68,-607.07 499.68,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="247.84" y="-582.87" font-family="Arial" font-size="18.00">Методика тестирования отказоустойчивости</text>
+<!-- all_ok -->
+<g id="node1" class="node">
+<title>all_ok</title>
+<ellipse fill="#c8e6c9" stroke="black" cx="351.68" cy="-508.42" rx="98.17" ry="65.05"/>
+<text xml:space="preserve" text-anchor="middle" x="351.68" y="-541.42" font-family="Arial" font-size="10.00">СОСТОЯНИЕ: ВСЁ РАБОТАЕТ</text>
+<text xml:space="preserve" text-anchor="middle" x="351.68" y="-529.42" font-family="Arial" font-size="10.00">nginx-1: MASTER (VIP)</text>
+<text xml:space="preserve" text-anchor="middle" x="351.68" y="-517.42" font-family="Arial" font-size="10.00">nginx-2: BACKUP</text>
+<text xml:space="preserve" text-anchor="middle" x="351.68" y="-505.42" font-family="Arial" font-size="10.00">backend-1: Активен</text>
+<text xml:space="preserve" text-anchor="middle" x="351.68" y="-493.42" font-family="Arial" font-size="10.00">backend-2: Активен</text>
+<text xml:space="preserve" text-anchor="middle" x="351.68" y="-481.42" font-family="Arial" font-size="10.00">db-1: Активен</text>
+<text xml:space="preserve" text-anchor="middle" x="351.68" y="-469.42" font-family="Arial" font-size="10.00">curl http://VIP → Django OK</text>
+</g>
+<!-- test1 -->
+<g id="node2" class="node">
+<title>test1</title>
+<polygon fill="#e6f4ea" stroke="black" points="340.09,-382.57 201.26,-382.57 201.26,-314.57 340.09,-314.57 340.09,-382.57"/>
+<text xml:space="preserve" text-anchor="middle" x="270.68" y="-369.57" font-family="Arial" font-size="10.00">ТЕСТ 1: Отказ nginx-1</text>
+<text xml:space="preserve" text-anchor="middle" x="270.68" y="-357.57" font-family="Arial" font-size="10.00">virsh destroy nginx-1</text>
+<text xml:space="preserve" text-anchor="middle" x="270.68" y="-345.57" font-family="Arial" font-size="10.00">Ожидание: 3.6 сек</text>
+<text xml:space="preserve" text-anchor="middle" x="270.68" y="-333.57" font-family="Arial" font-size="10.00">Результат: VIP на nginx-2</text>
+<text xml:space="preserve" text-anchor="middle" x="270.68" y="-321.57" font-family="Arial" font-size="10.00">curl http://VIP → Django OK</text>
+</g>
+<!-- all_ok&#45;&gt;test1 -->
+<g id="edge1" class="edge">
+<title>all_ok-&gt;test1</title>
+<path fill="none" stroke="black" d="M296.8,-454.3C296.8,-454.3 296.8,-394.12 296.8,-394.12"/>
+<polygon fill="black" stroke="black" points="300.3,-394.12 296.8,-384.12 293.3,-394.12 300.3,-394.12"/>
+<text xml:space="preserve" text-anchor="middle" x="334.43" y="-408.77" font-family="Times,serif" font-size="14.00">Шаг 1</text>
+</g>
+<!-- test2 -->
+<g id="node3" class="node">
+<title>test2</title>
+<polygon fill="#e6f4ea" stroke="black" points="344.81,-236.97 196.55,-236.97 196.55,-156.97 344.81,-156.97 344.81,-236.97"/>
+<text xml:space="preserve" text-anchor="middle" x="270.68" y="-223.97" font-family="Arial" font-size="10.00">ТЕСТ 2: Отказ backend-1</text>
+<text xml:space="preserve" text-anchor="middle" x="270.68" y="-211.97" font-family="Arial" font-size="10.00">virsh destroy backend-1</text>
+<text xml:space="preserve" text-anchor="middle" x="270.68" y="-199.97" font-family="Arial" font-size="10.00">Ожидание: мгновенно</text>
+<text xml:space="preserve" text-anchor="middle" x="270.68" y="-187.97" font-family="Arial" font-size="10.00">Результат: nginx исключает</text>
+<text xml:space="preserve" text-anchor="middle" x="270.68" y="-175.97" font-family="Arial" font-size="10.00">backend-1 из upstream</text>
+<text xml:space="preserve" text-anchor="middle" x="270.68" y="-163.97" font-family="Arial" font-size="10.00">curl http://VIP → Django OK</text>
+</g>
+<!-- test1&#45;&gt;test2 -->
+<g id="edge2" class="edge">
+<title>test1-&gt;test2</title>
+<path fill="none" stroke="black" d="M270.68,-314.17C270.68,-314.17 270.68,-248.92 270.68,-248.92"/>
+<polygon fill="black" stroke="black" points="274.18,-248.92 270.68,-238.92 267.18,-248.92 274.18,-248.92"/>
+<text xml:space="preserve" text-anchor="middle" x="286.43" y="-271.57" font-family="Times,serif" font-size="14.00">Шаг 2</text>
+</g>
+<!-- result -->
+<g id="node5" class="node">
+<title>result</title>
+<ellipse fill="#e8f0fe" stroke="black" stroke-width="2" cx="125.68" cy="-48.08" rx="125.68" ry="48.08"/>
+<text xml:space="preserve" text-anchor="middle" x="125.68" y="-69.08" font-family="Arial" font-size="10.00">ВЫВОД:</text>
+<text xml:space="preserve" text-anchor="middle" x="125.68" y="-57.08" font-family="Arial" font-size="10.00">Система выдерживает отказ</text>
+<text xml:space="preserve" text-anchor="middle" x="125.68" y="-45.08" font-family="Arial" font-size="10.00">любого сервера nginx или backend</text>
+<text xml:space="preserve" text-anchor="middle" x="125.68" y="-33.08" font-family="Arial" font-size="10.00">Единственная точка отказа — БД</text>
+<text xml:space="preserve" text-anchor="middle" x="125.68" y="-21.08" font-family="Arial" font-size="10.00">(по условию задания)</text>
+</g>
+<!-- test1&#45;&gt;result -->
+<g id="edge6" class="edge">
+<title>test1-&gt;result</title>
+<path fill="none" stroke="black" d="M201.05,-349C153.2,-349 98.27,-349 98.27,-349 98.27,-349 98.27,-107.28 98.27,-107.28"/>
+<polygon fill="black" stroke="black" points="101.77,-107.28 98.27,-97.28 94.77,-107.28 101.77,-107.28"/>
+</g>
+<!-- test3 -->
+<g id="node4" class="node">
+<title>test3</title>
+<polygon fill="#fff3e0" stroke="black" points="492.2,-88.08 341.15,-88.08 341.15,-8.08 492.2,-8.08 492.2,-88.08"/>
+<text xml:space="preserve" text-anchor="middle" x="416.68" y="-75.08" font-family="Arial" font-size="10.00">ТЕСТ 3: Восстановление</text>
+<text xml:space="preserve" text-anchor="middle" x="416.68" y="-63.08" font-family="Arial" font-size="10.00">virsh start nginx-1</text>
+<text xml:space="preserve" text-anchor="middle" x="416.68" y="-51.08" font-family="Arial" font-size="10.00">virsh start backend-1</text>
+<text xml:space="preserve" text-anchor="middle" x="416.68" y="-39.08" font-family="Arial" font-size="10.00">Результат:</text>
+<text xml:space="preserve" text-anchor="middle" x="416.68" y="-27.08" font-family="Arial" font-size="10.00">VIP возвращается на nginx-1</text>
+<text xml:space="preserve" text-anchor="middle" x="416.68" y="-15.08" font-family="Arial" font-size="10.00">backend-1 снова в upstream</text>
+</g>
+<!-- test2&#45;&gt;test3 -->
+<g id="edge3" class="edge">
+<title>test2-&gt;test3</title>
+<path fill="none" stroke="black" d="M296.25,-156.65C296.25,-112.54 296.25,-48 296.25,-48 296.25,-48 329.24,-48 329.24,-48"/>
+<polygon fill="black" stroke="black" points="329.24,-51.5 339.24,-48 329.24,-44.5 329.24,-51.5"/>
+<text xml:space="preserve" text-anchor="middle" x="333.43" y="-122.37" font-family="Times,serif" font-size="14.00">Шаг 3</text>
+</g>
+<!-- test2&#45;&gt;result -->
+<g id="edge5" class="edge">
+<title>test2-&gt;result</title>
+<path fill="none" stroke="black" d="M223.95,-156.68C223.95,-156.68 223.95,-90.47 223.95,-90.47"/>
+<polygon fill="black" stroke="black" points="227.45,-90.47 223.95,-80.47 220.45,-90.47 227.45,-90.47"/>
+</g>
+<!-- test3&#45;&gt;all_ok -->
+<g id="edge4" class="edge">
+<title>test3-&gt;all_ok</title>
+<path fill="none" stroke="black" d="M397.33,-88.53C397.33,-88.53 397.33,-438.96 397.33,-438.96"/>
+<polygon fill="black" stroke="black" points="393.83,-438.96 397.33,-448.96 400.83,-438.96 393.83,-438.96"/>
+<text xml:space="preserve" text-anchor="middle" x="464.18" y="-279.97" font-family="Times,serif" font-size="14.00">Цикл</text>
+<text xml:space="preserve" text-anchor="middle" x="464.18" y="-263.17" font-family="Times,serif" font-size="14.00">замкнулся</text>
+</g>
+</g>
+</svg>

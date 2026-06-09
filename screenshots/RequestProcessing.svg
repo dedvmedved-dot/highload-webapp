@@ -1,0 +1,141 @@
+<svg width="543pt" height="645pt" viewBox="0.00 0.00 543.00 645.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 640.62)">
+<title>RequestProcessing</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-640.62 538.65,-640.62 538.65,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="267.32" y="-616.42" font-family="Arial" font-size="18.00">Путь HTTP-запроса через систему</text>
+<!-- http_request -->
+<g id="node1" class="node">
+<title>http_request</title>
+<ellipse fill="#e8f0fe" stroke="black" cx="251.84" cy="-575.91" rx="82.87" ry="31.11"/>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-584.91" font-family="Arial" font-size="10.00">HTTP-запрос</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-572.91" font-family="Arial" font-size="10.00">GET / HTTP/1.1</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-560.91" font-family="Arial" font-size="10.00">Host: 192.168.122.100</text>
+</g>
+<!-- step1 -->
+<g id="node2" class="node">
+<title>step1</title>
+<polygon fill="#fce8e6" stroke="black" points="315.68,-507.8 188,-507.8 188,-451.8 315.68,-451.8 315.68,-507.8"/>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-494.8" font-family="Arial" font-size="10.00">1. Keepalived</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-482.8" font-family="Arial" font-size="10.00">VIP направляет запрос</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-470.8" font-family="Arial" font-size="10.00">на активный nginx</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-458.8" font-family="Arial" font-size="10.00">(MASTER или BACKUP)</text>
+</g>
+<!-- http_request&#45;&gt;step1 -->
+<g id="edge1" class="edge">
+<title>http_request-&gt;step1</title>
+<path fill="none" stroke="black" d="M251.84,-544.44C251.84,-544.44 251.84,-519.61 251.84,-519.61"/>
+<polygon fill="black" stroke="black" points="255.34,-519.61 251.84,-509.61 248.34,-519.61 255.34,-519.61"/>
+</g>
+<!-- step2 -->
+<g id="node3" class="node">
+<title>step2</title>
+<polygon fill="#e6f4ea" stroke="black" points="318.21,-414.8 185.47,-414.8 185.47,-358.8 318.21,-358.8 318.21,-414.8"/>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-401.8" font-family="Arial" font-size="10.00">2. Nginx</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-389.8" font-family="Arial" font-size="10.00">Выбирает backend</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-377.8" font-family="Arial" font-size="10.00">через round-robin</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-365.8" font-family="Arial" font-size="10.00">proxy_pass http://backend</text>
+</g>
+<!-- step1&#45;&gt;step2 -->
+<g id="edge2" class="edge">
+<title>step1-&gt;step2</title>
+<path fill="none" stroke="black" d="M251.84,-451.39C251.84,-451.39 251.84,-426.54 251.84,-426.54"/>
+<polygon fill="black" stroke="black" points="255.34,-426.54 251.84,-416.54 248.34,-426.54 255.34,-426.54"/>
+</g>
+<!-- step3 -->
+<g id="node4" class="node">
+<title>step3</title>
+<polygon fill="#fff3e0" stroke="black" points="326.24,-321.8 177.45,-321.8 177.45,-253.8 326.24,-253.8 326.24,-321.8"/>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-308.8" font-family="Arial" font-size="10.00">3. uWSGI</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-296.8" font-family="Arial" font-size="10.00">Принимает HTTP</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-284.8" font-family="Arial" font-size="10.00">Передаёт WSGI-приложению</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-272.8" font-family="Arial" font-size="10.00">4 worker процесса</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-260.8" font-family="Arial" font-size="10.00">обрабатывают параллельно</text>
+</g>
+<!-- step2&#45;&gt;step3 -->
+<g id="edge3" class="edge">
+<title>step2-&gt;step3</title>
+<path fill="none" stroke="black" d="M251.84,-358.43C251.84,-358.43 251.84,-333.66 251.84,-333.66"/>
+<polygon fill="black" stroke="black" points="255.34,-333.66 251.84,-323.66 248.34,-333.66 255.34,-333.66"/>
+</g>
+<!-- step4 -->
+<g id="node5" class="node">
+<title>step4</title>
+<polygon fill="#fff3e0" stroke="black" points="322.36,-216.8 181.33,-216.8 181.33,-148.8 322.36,-148.8 322.36,-216.8"/>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-203.8" font-family="Arial" font-size="10.00">4. Django</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-191.8" font-family="Arial" font-size="10.00">urls.py → View</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-179.8" font-family="Arial" font-size="10.00">ORM запрос к PostgreSQL</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-167.8" font-family="Arial" font-size="10.00">Рендеринг шаблона</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-155.8" font-family="Arial" font-size="10.00">Формирование HTML</text>
+</g>
+<!-- step3&#45;&gt;step4 -->
+<g id="edge4" class="edge">
+<title>step3-&gt;step4</title>
+<path fill="none" stroke="black" d="M251.84,-253.42C251.84,-253.42 251.84,-228.77 251.84,-228.77"/>
+<polygon fill="black" stroke="black" points="255.34,-228.77 251.84,-218.77 248.34,-228.77 255.34,-228.77"/>
+</g>
+<!-- step5 -->
+<g id="node6" class="node">
+<title>step5</title>
+<polygon fill="#f3e5f5" stroke="black" points="107.68,-67.6 0,-67.6 0,-11.6 107.68,-11.6 107.68,-67.6"/>
+<text xml:space="preserve" text-anchor="middle" x="53.84" y="-54.6" font-family="Arial" font-size="10.00">5. PostgreSQL</text>
+<text xml:space="preserve" text-anchor="middle" x="53.84" y="-42.6" font-family="Arial" font-size="10.00">Выполняет SQL</text>
+<text xml:space="preserve" text-anchor="middle" x="53.84" y="-30.6" font-family="Arial" font-size="10.00">Возвращает данные</text>
+<text xml:space="preserve" text-anchor="middle" x="53.84" y="-18.6" font-family="Arial" font-size="10.00">через psycopg2</text>
+</g>
+<!-- step4&#45;&gt;step5 -->
+<g id="edge5" class="edge">
+<title>step4-&gt;step5</title>
+<path fill="none" stroke="black" d="M186.14,-148.51C186.14,-103.46 186.14,-30 186.14,-30 186.14,-30 119.55,-30 119.55,-30"/>
+<polygon fill="black" stroke="black" points="119.55,-26.5 109.55,-30 119.55,-33.5 119.55,-26.5"/>
+<text xml:space="preserve" text-anchor="middle" x="61.34" y="-118.2" font-family="Times,serif" font-size="14.00">если нужны</text>
+<text xml:space="preserve" text-anchor="middle" x="61.34" y="-101.4" font-family="Times,serif" font-size="14.00">данные из БД</text>
+</g>
+<!-- step6 -->
+<g id="node7" class="node">
+<title>step6</title>
+<polygon fill="#e1bee7" stroke="black" points="315.13,-73.6 188.55,-73.6 188.55,-5.6 315.13,-5.6 315.13,-73.6"/>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-60.6" font-family="Arial" font-size="10.00">6. GFS2 (если статика)</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-48.6" font-family="Arial" font-size="10.00">Чтение файла</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-36.6" font-family="Arial" font-size="10.00">/mnt/gfs2_static/static/</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-24.6" font-family="Arial" font-size="10.00">Оба backend видят</text>
+<text xml:space="preserve" text-anchor="middle" x="251.84" y="-12.6" font-family="Arial" font-size="10.00">одни и те же файлы</text>
+</g>
+<!-- step4&#45;&gt;step6 -->
+<g id="edge6" class="edge">
+<title>step4-&gt;step6</title>
+<path fill="none" stroke="black" d="M272.94,-148.5C272.94,-148.5 272.94,-85.13 272.94,-85.13"/>
+<polygon fill="black" stroke="black" points="276.44,-85.13 272.94,-75.13 269.44,-85.13 276.44,-85.13"/>
+<text xml:space="preserve" text-anchor="middle" x="288.59" y="-118.2" font-family="Times,serif" font-size="14.00">если запрос</text>
+<text xml:space="preserve" text-anchor="middle" x="288.59" y="-101.4" font-family="Times,serif" font-size="14.00">/static/*</text>
+</g>
+<!-- http_response -->
+<g id="node8" class="node">
+<title>http_response</title>
+<ellipse fill="#e8f0fe" stroke="black" cx="449.84" cy="-39.6" rx="84.8" ry="39.6"/>
+<text xml:space="preserve" text-anchor="middle" x="449.84" y="-54.6" font-family="Arial" font-size="10.00">HTTP-ответ</text>
+<text xml:space="preserve" text-anchor="middle" x="449.84" y="-42.6" font-family="Arial" font-size="10.00">200 OK</text>
+<text xml:space="preserve" text-anchor="middle" x="449.84" y="-30.6" font-family="Arial" font-size="10.00">Content-Type: text/html</text>
+<text xml:space="preserve" text-anchor="middle" x="449.84" y="-18.6" font-family="Arial" font-size="10.00">&lt;html&gt;...&lt;/html&gt;</text>
+</g>
+<!-- step4&#45;&gt;http_response -->
+<g id="edge9" class="edge">
+<title>step4-&gt;http_response</title>
+<path fill="none" stroke="black" d="M318.74,-148.59C318.74,-106.35 318.74,-40 318.74,-40 318.74,-40 353.08,-40 353.08,-40"/>
+<polygon fill="black" stroke="black" points="353.08,-43.5 363.08,-40 353.08,-36.5 353.08,-43.5"/>
+</g>
+<!-- step5&#45;&gt;step4 -->
+<g id="edge7" class="edge">
+<title>step5-&gt;step4</title>
+<path fill="none" stroke="black" d="M108.18,-49C143.77,-49 183.73,-49 183.73,-49 183.73,-49 183.73,-136.83 183.73,-136.83"/>
+<polygon fill="black" stroke="black" points="180.23,-136.83 183.73,-146.83 187.23,-136.83 180.23,-136.83"/>
+<text xml:space="preserve" text-anchor="middle" x="175.84" y="-109.8" font-family="Times,serif" font-size="14.00">данные</text>
+</g>
+<!-- step6&#45;&gt;step4 -->
+<g id="edge8" class="edge">
+<title>step6-&gt;step4</title>
+<path fill="none" stroke="black" d="M230.75,-73.9C230.75,-73.9 230.75,-137.26 230.75,-137.26"/>
+<polygon fill="black" stroke="black" points="227.25,-137.26 230.75,-147.26 234.25,-137.26 227.25,-137.26"/>
+<text xml:space="preserve" text-anchor="middle" x="394.84" y="-109.8" font-family="Times,serif" font-size="14.00">файл</text>
+</g>
+</g>
+</svg>

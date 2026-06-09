@@ -1,0 +1,143 @@
+<svg width="797pt" height="535pt" viewBox="0.00 0.00 797.00 535.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 530.82)">
+<title>GFS2vsNFS</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-530.82 793,-530.82 793,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="394.5" y="-506.62" font-family="Arial" font-size="18.00">GFS2 vs NFS: Ключевые отличия</text>
+<g id="clust1" class="cluster">
+<title>cluster_nfs</title>
+<polygon fill="#ffebee" stroke="#ea4335" points="8,-242.6 8,-480.97 488,-480.97 488,-242.6 8,-242.6"/>
+<text xml:space="preserve" text-anchor="middle" x="248" y="-465.27" font-family="Arial" font-size="13.00">NFS (Network File System)</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_gfs2</title>
+<polygon fill="#e6f4ea" stroke="#34a853" points="530,-8 530,-489.22 781,-489.22 781,-8 530,-8"/>
+<text xml:space="preserve" text-anchor="middle" x="655.5" y="-473.52" font-family="Arial" font-size="13.00">GFS2 (Global File System 2)</text>
+</g>
+<!-- nfs_server -->
+<g id="node1" class="node">
+<title>nfs_server</title>
+<polygon fill="#ef9a9a" stroke="black" points="264.84,-449.37 157.16,-449.37 157.16,-405.37 264.84,-405.37 264.84,-449.37"/>
+<text xml:space="preserve" text-anchor="middle" x="211" y="-436.37" font-family="Arial" font-size="10.00">Сервер NFS</text>
+<text xml:space="preserve" text-anchor="middle" x="211" y="-424.37" font-family="Arial" font-size="10.00">Владеет диском</text>
+<text xml:space="preserve" text-anchor="middle" x="211" y="-412.37" font-family="Arial" font-size="10.00">Экспортирует шару</text>
+</g>
+<!-- nfs_client1 -->
+<g id="node2" class="node">
+<title>nfs_client1</title>
+<polygon fill="#ffcdd2" stroke="black" points="107.51,-315.46 16.49,-315.46 16.49,-271.46 107.51,-271.46 107.51,-315.46"/>
+<text xml:space="preserve" text-anchor="middle" x="62" y="-302.46" font-family="Arial" font-size="10.00">Клиент 1</text>
+<text xml:space="preserve" text-anchor="middle" x="62" y="-290.46" font-family="Arial" font-size="10.00">Монтирует</text>
+<text xml:space="preserve" text-anchor="middle" x="62" y="-278.46" font-family="Arial" font-size="10.00">удалённую шару</text>
+</g>
+<!-- nfs_server&#45;&gt;nfs_client1 -->
+<g id="edge1" class="edge">
+<title>nfs_server-&gt;nfs_client1</title>
+<path fill="none" stroke="black" d="M161.33,-404.88C161.33,-366.63 161.33,-293 161.33,-293 161.33,-293 119.4,-293 119.4,-293"/>
+<polygon fill="black" stroke="black" points="119.4,-289.5 109.4,-293 119.4,-296.5 119.4,-289.5"/>
+<text xml:space="preserve" text-anchor="middle" x="110.75" y="-362.52" font-family="Times,serif" font-size="14.00">по сети</text>
+</g>
+<!-- nfs_client2 -->
+<g id="node3" class="node">
+<title>nfs_client2</title>
+<polygon fill="#ffcdd2" stroke="black" points="256.51,-315.46 165.49,-315.46 165.49,-271.46 256.51,-271.46 256.51,-315.46"/>
+<text xml:space="preserve" text-anchor="middle" x="211" y="-302.46" font-family="Arial" font-size="10.00">Клиент 2</text>
+<text xml:space="preserve" text-anchor="middle" x="211" y="-290.46" font-family="Arial" font-size="10.00">Монтирует</text>
+<text xml:space="preserve" text-anchor="middle" x="211" y="-278.46" font-family="Arial" font-size="10.00">удалённую шару</text>
+</g>
+<!-- nfs_server&#45;&gt;nfs_client2 -->
+<g id="edge2" class="edge">
+<title>nfs_server-&gt;nfs_client2</title>
+<path fill="none" stroke="black" d="M211,-404.96C211,-404.96 211,-327.46 211,-327.46"/>
+<polygon fill="black" stroke="black" points="214.5,-327.46 211,-317.46 207.5,-327.46 214.5,-327.46"/>
+<text xml:space="preserve" text-anchor="middle" x="233.75" y="-362.52" font-family="Times,serif" font-size="14.00">по сети</text>
+</g>
+<!-- nfs_problem -->
+<g id="node4" class="node">
+<title>nfs_problem</title>
+<polygon fill="#ef9a9a" stroke="black" points="479.84,-275.71 479.84,-311.21 431.31,-336.32 362.69,-336.32 314.16,-311.21 314.16,-275.71 362.69,-250.6 431.31,-250.6 479.84,-275.71"/>
+<text xml:space="preserve" text-anchor="middle" x="397" y="-308.46" font-family="Arial" font-size="10.00">Проблема:</text>
+<text xml:space="preserve" text-anchor="middle" x="397" y="-296.46" font-family="Arial" font-size="10.00">Отказ сервера NFS</text>
+<text xml:space="preserve" text-anchor="middle" x="397" y="-284.46" font-family="Arial" font-size="10.00">= потеря доступа</text>
+<text xml:space="preserve" text-anchor="middle" x="397" y="-272.46" font-family="Arial" font-size="10.00">ко всем данным</text>
+</g>
+<!-- nfs_server&#45;&gt;nfs_problem -->
+<g id="edge3" class="edge">
+<title>nfs_server-&gt;nfs_problem</title>
+<path fill="none" stroke="#ea4335" stroke-dasharray="5,2" d="M260.67,-404.87C260.67,-375.01 260.67,-326 260.67,-326 260.67,-326 330.43,-326 330.43,-326"/>
+<polygon fill="#ea4335" stroke="#ea4335" points="330.43,-329.5 340.43,-326 330.43,-322.5 330.43,-329.5"/>
+</g>
+<!-- storage -->
+<g id="node5" class="node">
+<title>storage</title>
+<path fill="#a5d6a7" stroke="black" d="M731.73,-452.12C731.73,-455.16 712.58,-457.62 689,-457.62 665.42,-457.62 646.27,-455.16 646.27,-452.12 646.27,-452.12 646.27,-402.62 646.27,-402.62 646.27,-399.59 665.42,-397.12 689,-397.12 712.58,-397.12 731.73,-399.59 731.73,-402.62 731.73,-402.62 731.73,-452.12 731.73,-452.12"/>
+<path fill="none" stroke="black" d="M731.73,-452.12C731.73,-449.09 712.58,-446.62 689,-446.62 665.42,-446.62 646.27,-449.09 646.27,-452.12"/>
+<text xml:space="preserve" text-anchor="middle" x="689" y="-436.37" font-family="Arial" font-size="10.00">Общее блочное</text>
+<text xml:space="preserve" text-anchor="middle" x="689" y="-424.37" font-family="Arial" font-size="10.00">устройство</text>
+<text xml:space="preserve" text-anchor="middle" x="689" y="-412.37" font-family="Arial" font-size="10.00">(iSCSI / SAN)</text>
+</g>
+<!-- gfs2_node1 -->
+<g id="node6" class="node">
+<title>gfs2_node1</title>
+<polygon fill="#a5d6a7" stroke="black" points="623.73,-321.46 538.27,-321.46 538.27,-265.46 623.73,-265.46 623.73,-321.46"/>
+<text xml:space="preserve" text-anchor="middle" x="581" y="-308.46" font-family="Arial" font-size="10.00">Узел 1</text>
+<text xml:space="preserve" text-anchor="middle" x="581" y="-296.46" font-family="Arial" font-size="10.00">Прямой доступ</text>
+<text xml:space="preserve" text-anchor="middle" x="581" y="-284.46" font-family="Arial" font-size="10.00">к диску</text>
+<text xml:space="preserve" text-anchor="middle" x="581" y="-272.46" font-family="Arial" font-size="10.00">GFS2 + DLM</text>
+</g>
+<!-- storage&#45;&gt;gfs2_node1 -->
+<g id="edge4" class="edge">
+<title>storage-&gt;gfs2_node1</title>
+<path fill="none" stroke="#34a853" d="M646.01,-401C615.89,-401 581,-401 581,-401 581,-401 581,-333.23 581,-333.23"/>
+<polygon fill="#34a853" stroke="#34a853" points="584.5,-333.23 581,-323.23 577.5,-333.23 584.5,-333.23"/>
+<text xml:space="preserve" text-anchor="middle" x="664.73" y="-362.52" font-family="Times,serif" font-size="14.00">iSCSI</text>
+</g>
+<!-- gfs2_node2 -->
+<g id="node7" class="node">
+<title>gfs2_node2</title>
+<polygon fill="#a5d6a7" stroke="black" points="695.73,-173 610.27,-173 610.27,-117 695.73,-117 695.73,-173"/>
+<text xml:space="preserve" text-anchor="middle" x="653" y="-160" font-family="Arial" font-size="10.00">Узел 2</text>
+<text xml:space="preserve" text-anchor="middle" x="653" y="-148" font-family="Arial" font-size="10.00">Прямой доступ</text>
+<text xml:space="preserve" text-anchor="middle" x="653" y="-136" font-family="Arial" font-size="10.00">к диску</text>
+<text xml:space="preserve" text-anchor="middle" x="653" y="-124" font-family="Arial" font-size="10.00">GFS2 + DLM</text>
+</g>
+<!-- storage&#45;&gt;gfs2_node2 -->
+<g id="edge5" class="edge">
+<title>storage-&gt;gfs2_node2</title>
+<path fill="none" stroke="#34a853" d="M671,-396.88C671,-396.88 671,-184.77 671,-184.77"/>
+<polygon fill="#34a853" stroke="#34a853" points="674.5,-184.77 671,-174.77 667.5,-184.77 674.5,-184.77"/>
+<text xml:space="preserve" text-anchor="middle" x="756.73" y="-289.26" font-family="Times,serif" font-size="14.00">iSCSI</text>
+</g>
+<!-- gfs2_node1&#45;&gt;gfs2_node2 -->
+<g id="edge6" class="edge">
+<title>gfs2_node1-&gt;gfs2_node2</title>
+<path fill="none" stroke="#34a853" d="M617,-253.67C617,-253.67 617,-184.93 617,-184.93"/>
+<polygon fill="#34a853" stroke="#34a853" points="613.5,-253.67 617,-263.67 620.5,-253.67 613.5,-253.67"/>
+<polygon fill="#34a853" stroke="#34a853" points="620.5,-184.93 617,-174.93 613.5,-184.93 620.5,-184.93"/>
+<text xml:space="preserve" text-anchor="middle" x="674.31" y="-216" font-family="Times,serif" font-size="14.00">DLM координирует</text>
+<text xml:space="preserve" text-anchor="middle" x="674.31" y="-199.2" font-family="Times,serif" font-size="14.00">блокировки</text>
+</g>
+<!-- gfs2_advantage -->
+<g id="node8" class="node">
+<title>gfs2_advantage</title>
+<polygon fill="#c8e6c9" stroke="black" points="686.96,-72 563.04,-72 563.04,-16 692.96,-16 692.96,-66 686.96,-72"/>
+<polyline fill="none" stroke="black" points="686.96,-72 686.96,-66"/>
+<polyline fill="none" stroke="black" points="692.96,-66 686.96,-66"/>
+<text xml:space="preserve" text-anchor="middle" x="628" y="-59" font-family="Arial" font-size="10.00">Преимущество:</text>
+<text xml:space="preserve" text-anchor="middle" x="628" y="-47" font-family="Arial" font-size="10.00">Все узлы равноправны</text>
+<text xml:space="preserve" text-anchor="middle" x="628" y="-35" font-family="Arial" font-size="10.00">Отказ одного узла</text>
+<text xml:space="preserve" text-anchor="middle" x="628" y="-23" font-family="Arial" font-size="10.00">не влияет на остальных</text>
+</g>
+<!-- gfs2_node1&#45;&gt;gfs2_advantage -->
+<g id="edge7" class="edge">
+<title>gfs2_node1-&gt;gfs2_advantage</title>
+<path fill="none" stroke="black" d="M586.66,-265.33C586.66,-265.33 586.66,-83.92 586.66,-83.92"/>
+<polygon fill="black" stroke="black" points="590.16,-83.92 586.66,-73.92 583.16,-83.92 590.16,-83.92"/>
+</g>
+<!-- gfs2_node2&#45;&gt;gfs2_advantage -->
+<g id="edge8" class="edge">
+<title>gfs2_node2-&gt;gfs2_advantage</title>
+<path fill="none" stroke="black" d="M651.61,-116.6C651.61,-116.6 651.61,-83.7 651.61,-83.7"/>
+<polygon fill="black" stroke="black" points="655.11,-83.7 651.61,-73.7 648.11,-83.7 655.11,-83.7"/>
+</g>
+</g>
+</svg>

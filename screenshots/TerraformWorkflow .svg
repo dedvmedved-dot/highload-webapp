@@ -1,0 +1,144 @@
+<svg width="243pt" height="858pt" viewBox="0.00 0.00 243.00 858.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 853.65)">
+<title>TerraformWorkflow</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-853.65 239.03,-853.65 239.03,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-829.45" font-family="Arial" font-size="18.00">Процесс работы Terraform</text>
+<g id="clust1" class="cluster">
+<title>cluster_init</title>
+<polygon fill="#fce8e6" stroke="black" points="40.52,-548.45 40.52,-776.05 194.52,-776.05 194.52,-548.45 40.52,-548.45"/>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-760.35" font-family="Arial" font-size="13.00">terraform init</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_plan</title>
+<polygon fill="#e6f4ea" stroke="black" points="55.52,-296.85 55.52,-540.45 179.52,-540.45 179.52,-296.85 55.52,-296.85"/>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-524.75" font-family="Arial" font-size="13.00">terraform plan</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_apply</title>
+<polygon fill="#fff3e0" stroke="black" points="16.52,-73.25 16.52,-288.85 218.52,-288.85 218.52,-73.25 16.52,-73.25"/>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-273.15" font-family="Arial" font-size="13.00">terraform apply</text>
+</g>
+<!-- start -->
+<g id="node1" class="node">
+<title>start</title>
+<ellipse fill="#e8f0fe" stroke="black" cx="117.52" cy="-802.05" rx="29.67" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-799.05" font-family="Arial" font-size="10.00">Начало</text>
+</g>
+<!-- read_providers -->
+<g id="node2" class="node">
+<title>read_providers</title>
+<path fill="none" stroke="black" d="M174.65,-744.45C174.65,-744.45 60.38,-744.45 60.38,-744.45 54.38,-744.45 48.38,-738.45 48.38,-732.45 48.38,-732.45 48.38,-720.45 48.38,-720.45 48.38,-714.45 54.38,-708.45 60.38,-708.45 60.38,-708.45 174.65,-708.45 174.65,-708.45 180.65,-708.45 186.65,-714.45 186.65,-720.45 186.65,-720.45 186.65,-732.45 186.65,-732.45 186.65,-738.45 180.65,-744.45 174.65,-744.45"/>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-729.45" font-family="Arial" font-size="10.00">Читает required_providers:</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-717.45" font-family="Arial" font-size="10.00">dmacvicar/libvirt 0.7.1</text>
+</g>
+<!-- start&#45;&gt;read_providers -->
+<g id="edge1" class="edge">
+<title>start-&gt;read_providers</title>
+<path fill="none" stroke="black" d="M117.52,-783.75C117.52,-783.75 117.52,-756.36 117.52,-756.36"/>
+<polygon fill="black" stroke="black" points="121.02,-756.36 117.52,-746.36 114.02,-756.36 121.02,-756.36"/>
+</g>
+<!-- download -->
+<g id="node3" class="node">
+<title>download</title>
+<path fill="none" stroke="black" d="M164.92,-672.45C164.92,-672.45 70.12,-672.45 70.12,-672.45 64.12,-672.45 58.12,-666.45 58.12,-660.45 58.12,-660.45 58.12,-640.45 58.12,-640.45 58.12,-634.45 64.12,-628.45 70.12,-628.45 70.12,-628.45 164.92,-628.45 164.92,-628.45 170.92,-628.45 176.92,-634.45 176.92,-640.45 176.92,-640.45 176.92,-660.45 176.92,-660.45 176.92,-666.45 170.92,-672.45 164.92,-672.45"/>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-659.45" font-family="Arial" font-size="10.00">Скачивает провайдер</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-647.45" font-family="Arial" font-size="10.00">из локального кэша</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-635.45" font-family="Arial" font-size="10.00">(~/.terraform.d/plugins)</text>
+</g>
+<!-- read_providers&#45;&gt;download -->
+<g id="edge2" class="edge">
+<title>read_providers-&gt;download</title>
+<path fill="none" stroke="black" d="M117.52,-708.06C117.52,-708.06 117.52,-684.26 117.52,-684.26"/>
+<polygon fill="black" stroke="black" points="121.02,-684.26 117.52,-674.26 114.02,-684.26 121.02,-684.26"/>
+</g>
+<!-- create_lock -->
+<g id="node4" class="node">
+<title>create_lock</title>
+<path fill="none" stroke="black" d="M153.25,-592.45C153.25,-592.45 81.78,-592.45 81.78,-592.45 75.78,-592.45 69.78,-586.45 69.78,-580.45 69.78,-580.45 69.78,-568.45 69.78,-568.45 69.78,-562.45 75.78,-556.45 81.78,-556.45 81.78,-556.45 153.25,-556.45 153.25,-556.45 159.25,-556.45 165.25,-562.45 165.25,-568.45 165.25,-568.45 165.25,-580.45 165.25,-580.45 165.25,-586.45 159.25,-592.45 153.25,-592.45"/>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-577.45" font-family="Arial" font-size="10.00">Создаёт</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-565.45" font-family="Arial" font-size="10.00">.terraform.lock.hcl</text>
+</g>
+<!-- download&#45;&gt;create_lock -->
+<g id="edge3" class="edge">
+<title>download-&gt;create_lock</title>
+<path fill="none" stroke="black" d="M117.52,-628.06C117.52,-628.06 117.52,-604.37 117.52,-604.37"/>
+<polygon fill="black" stroke="black" points="121.02,-604.37 117.52,-594.37 114.02,-604.37 121.02,-604.37"/>
+</g>
+<!-- read_tf -->
+<g id="node5" class="node">
+<title>read_tf</title>
+<path fill="none" stroke="black" d="M147.97,-508.85C147.97,-508.85 87.06,-508.85 87.06,-508.85 81.06,-508.85 75.06,-502.85 75.06,-496.85 75.06,-496.85 75.06,-476.85 75.06,-476.85 75.06,-470.85 81.06,-464.85 87.06,-464.85 87.06,-464.85 147.97,-464.85 147.97,-464.85 153.97,-464.85 159.97,-470.85 159.97,-476.85 159.97,-476.85 159.97,-496.85 159.97,-496.85 159.97,-502.85 153.97,-508.85 147.97,-508.85"/>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-495.85" font-family="Arial" font-size="10.00">Читает main.tf,</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-483.85" font-family="Arial" font-size="10.00">outputs.tf,</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-471.85" font-family="Arial" font-size="10.00">cloud-init.yaml</text>
+</g>
+<!-- create_lock&#45;&gt;read_tf -->
+<g id="edge4" class="edge">
+<title>create_lock-&gt;read_tf</title>
+<path fill="none" stroke="black" d="M117.52,-556.3C117.52,-556.3 117.52,-520.86 117.52,-520.86"/>
+<polygon fill="black" stroke="black" points="121.02,-520.86 117.52,-510.86 114.02,-520.86 121.02,-520.86"/>
+</g>
+<!-- calc_diff -->
+<g id="node6" class="node">
+<title>calc_diff</title>
+<path fill="none" stroke="black" d="M159.36,-428.85C159.36,-428.85 75.67,-428.85 75.67,-428.85 69.67,-428.85 63.67,-422.85 63.67,-416.85 63.67,-416.85 63.67,-396.85 63.67,-396.85 63.67,-390.85 69.67,-384.85 75.67,-384.85 75.67,-384.85 159.36,-384.85 159.36,-384.85 165.36,-384.85 171.36,-390.85 171.36,-396.85 171.36,-396.85 171.36,-416.85 171.36,-416.85 171.36,-422.85 165.36,-428.85 159.36,-428.85"/>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-415.85" font-family="Arial" font-size="10.00">Вычисляет разницу</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-403.85" font-family="Arial" font-size="10.00">между состоянием</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-391.85" font-family="Arial" font-size="10.00">(state) и кодом</text>
+</g>
+<!-- read_tf&#45;&gt;calc_diff -->
+<g id="edge5" class="edge">
+<title>read_tf-&gt;calc_diff</title>
+<path fill="none" stroke="black" d="M117.52,-464.57C117.52,-464.57 117.52,-440.81 117.52,-440.81"/>
+<polygon fill="black" stroke="black" points="121.02,-440.81 117.52,-430.81 114.02,-440.81 121.02,-440.81"/>
+</g>
+<!-- show_plan -->
+<g id="node7" class="node">
+<title>show_plan</title>
+<path fill="none" stroke="black" d="M156.58,-348.85C156.58,-348.85 78.45,-348.85 78.45,-348.85 72.45,-348.85 66.45,-342.85 66.45,-336.85 66.45,-336.85 66.45,-316.85 66.45,-316.85 66.45,-310.85 72.45,-304.85 78.45,-304.85 78.45,-304.85 156.58,-304.85 156.58,-304.85 162.58,-304.85 168.58,-310.85 168.58,-316.85 168.58,-316.85 168.58,-336.85 168.58,-336.85 168.58,-342.85 162.58,-348.85 156.58,-348.85"/>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-335.85" font-family="Arial" font-size="10.00">План: 16 ресурсов</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-323.85" font-family="Arial" font-size="10.00">5 ВМ + диски +</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-311.85" font-family="Arial" font-size="10.00">cloud-init ISO</text>
+</g>
+<!-- calc_diff&#45;&gt;show_plan -->
+<g id="edge6" class="edge">
+<title>calc_diff-&gt;show_plan</title>
+<path fill="none" stroke="black" d="M117.52,-384.57C117.52,-384.57 117.52,-360.81 117.52,-360.81"/>
+<polygon fill="black" stroke="black" points="121.02,-360.81 117.52,-350.81 114.02,-360.81 121.02,-360.81"/>
+</g>
+<!-- steps -->
+<g id="node8" class="node">
+<title>steps</title>
+<polygon fill="#ffe0b2" stroke="black" points="210.41,-257.25 24.62,-257.25 24.62,-81.25 210.41,-81.25 210.41,-257.25"/>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-244.25" font-family="Arial" font-size="10.00">1. libvirt_volume.ubuntu_image</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-232.25" font-family="Arial" font-size="10.00">   Скачивает образ Ubuntu (~500 МБ)</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-208.25" font-family="Arial" font-size="10.00">2. libvirt_volume.disk (×6)</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-196.25" font-family="Arial" font-size="10.00">   Создаёт диски ВМ (10 ГБ каждый)</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-172.25" font-family="Arial" font-size="10.00">3. libvirt_cloudinit_disk.init (×6)</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-160.25" font-family="Arial" font-size="10.00">   Создаёт ISO с SSH-ключом</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-136.25" font-family="Arial" font-size="10.00">4. libvirt_domain.vm (×6)</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-124.25" font-family="Arial" font-size="10.00">   Запускает виртуальные машины</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-100.25" font-family="Arial" font-size="10.00">5. outputs</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-88.25" font-family="Arial" font-size="10.00">   Выводит IP-адреса</text>
+</g>
+<!-- show_plan&#45;&gt;steps -->
+<g id="edge7" class="edge">
+<title>show_plan-&gt;steps</title>
+<path fill="none" stroke="black" d="M117.52,-304.61C117.52,-304.61 117.52,-268.99 117.52,-268.99"/>
+<polygon fill="black" stroke="black" points="121.02,-268.99 117.52,-258.99 114.02,-268.99 121.02,-268.99"/>
+</g>
+<!-- end -->
+<g id="node9" class="node">
+<title>end</title>
+<ellipse fill="#c8e6c9" stroke="black" cx="117.52" cy="-22.63" rx="91.86" ry="22.63"/>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-25.63" font-family="Arial" font-size="10.00">6 ВМ запущены</text>
+<text xml:space="preserve" text-anchor="middle" x="117.52" y="-13.63" font-family="Arial" font-size="10.00">Инфраструктура готова</text>
+</g>
+<!-- steps&#45;&gt;end -->
+<g id="edge8" class="edge">
+<title>steps-&gt;end</title>
+<path fill="none" stroke="black" d="M117.52,-81C117.52,-81 117.52,-57.25 117.52,-57.25"/>
+<polygon fill="black" stroke="black" points="121.02,-57.25 117.52,-47.25 114.02,-57.25 121.02,-57.25"/>
+</g>
+</g>
+</svg>

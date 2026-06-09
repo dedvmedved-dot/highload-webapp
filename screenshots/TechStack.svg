@@ -1,0 +1,255 @@
+<svg width="1666pt" height="666pt" viewBox="0.00 0.00 1666.00 666.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 662.45)">
+<title>TechStack</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-662.45 1662,-662.45 1662,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="829" y="-638.25" font-family="Arial" font-size="18.00">Технологический стек проекта</text>
+<g id="clust1" class="cluster">
+<title>cluster_iaac</title>
+<polygon fill="#e0e0e0" stroke="black" points="581,-384.4 581,-620.85 927,-620.85 927,-384.4 581,-384.4"/>
+<text xml:space="preserve" text-anchor="middle" x="754" y="-604.25" font-family="Arial" font-size="14.00">Infrastructure as Code</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_virt</title>
+<polygon fill="#e8f0fe" stroke="black" points="8,-8 8,-330.4 158,-330.4 158,-8 8,-8"/>
+<text xml:space="preserve" text-anchor="middle" x="83" y="-313.8" font-family="Arial" font-size="14.00">Виртуализация</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_services</title>
+<polygon fill="#e6f4ea" stroke="black" points="192,-207.6 192,-376.4 1650,-376.4 1650,-207.6 192,-207.6"/>
+<text xml:space="preserve" text-anchor="middle" x="921" y="-359.8" font-family="Arial" font-size="14.00">Сервисы и протоколы</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_gfs2_tech</title>
+<polygon fill="#c8e6c9" stroke="black" points="200,-215.6 200,-343.6 833,-343.6 833,-215.6 200,-215.6"/>
+<text xml:space="preserve" text-anchor="middle" x="516.5" y="-327" font-family="Arial" font-size="14.00">GFS2 Stack</text>
+</g>
+<!-- git -->
+<g id="node1" class="node">
+<title>git</title>
+<path fill="#bdbdbd" stroke="black" d="M822.54,-582.1C822.54,-585.38 793.61,-588.05 758,-588.05 722.39,-588.05 693.46,-585.38 693.46,-582.1 693.46,-582.1 693.46,-528.55 693.46,-528.55 693.46,-525.27 722.39,-522.6 758,-522.6 793.61,-522.6 822.54,-525.27 822.54,-528.55 822.54,-528.55 822.54,-582.1 822.54,-582.1"/>
+<path fill="none" stroke="black" d="M822.54,-582.1C822.54,-578.82 793.61,-576.15 758,-576.15 722.39,-576.15 693.46,-578.82 693.46,-582.1"/>
+<text xml:space="preserve" text-anchor="middle" x="758" y="-565.23" font-family="Arial" font-size="11.00">Git</text>
+<text xml:space="preserve" text-anchor="middle" x="758" y="-552.02" font-family="Arial" font-size="11.00">Версионирование</text>
+<text xml:space="preserve" text-anchor="middle" x="758" y="-538.82" font-family="Arial" font-size="11.00">кода инфраструктуры</text>
+</g>
+<!-- tf -->
+<g id="node2" class="node">
+<title>tf</title>
+<polygon fill="#bdbdbd" stroke="black" points="736.71,-473 589.29,-473 589.29,-399 736.71,-399 736.71,-473"/>
+<text xml:space="preserve" text-anchor="middle" x="663" y="-459.1" font-family="Arial" font-size="11.00">Terraform 1.12</text>
+<text xml:space="preserve" text-anchor="middle" x="663" y="-445.9" font-family="Arial" font-size="11.00">HCL-язык</text>
+<text xml:space="preserve" text-anchor="middle" x="663" y="-432.7" font-family="Arial" font-size="11.00">Декларативное описание</text>
+<text xml:space="preserve" text-anchor="middle" x="663" y="-419.5" font-family="Arial" font-size="11.00">Ресурсы: ВМ, диски, сеть</text>
+<text xml:space="preserve" text-anchor="middle" x="663" y="-406.3" font-family="Arial" font-size="11.00">Провайдер: libvirt</text>
+</g>
+<!-- git&#45;&gt;tf -->
+<g id="edge1" class="edge">
+<title>git-&gt;tf</title>
+<path fill="none" stroke="black" d="M715.08,-523.03C715.08,-523.03 715.08,-484.9 715.08,-484.9"/>
+<polygon fill="black" stroke="black" points="718.58,-484.9 715.08,-474.9 711.58,-484.9 718.58,-484.9"/>
+</g>
+<!-- ansible -->
+<g id="node3" class="node">
+<title>ansible</title>
+<polygon fill="#bdbdbd" stroke="black" points="919.1,-479.6 794.9,-479.6 794.9,-392.4 919.1,-392.4 919.1,-479.6"/>
+<text xml:space="preserve" text-anchor="middle" x="857" y="-465.7" font-family="Arial" font-size="11.00">Ansible</text>
+<text xml:space="preserve" text-anchor="middle" x="857" y="-452.5" font-family="Arial" font-size="11.00">YAML-плейбуки</text>
+<text xml:space="preserve" text-anchor="middle" x="857" y="-439.3" font-family="Arial" font-size="11.00">Роли: nginx, backend,</text>
+<text xml:space="preserve" text-anchor="middle" x="857" y="-426.1" font-family="Arial" font-size="11.00">db, gfs2, iscsi-target</text>
+<text xml:space="preserve" text-anchor="middle" x="857" y="-412.9" font-family="Arial" font-size="11.00">Модули: apt, systemd,</text>
+<text xml:space="preserve" text-anchor="middle" x="857" y="-399.7" font-family="Arial" font-size="11.00">template, lineinfile</text>
+</g>
+<!-- git&#45;&gt;ansible -->
+<g id="edge2" class="edge">
+<title>git-&gt;ansible</title>
+<path fill="none" stroke="black" d="M808.72,-523.66C808.72,-523.66 808.72,-491.45 808.72,-491.45"/>
+<polygon fill="black" stroke="black" points="812.22,-491.45 808.72,-481.45 805.22,-491.45 812.22,-491.45"/>
+</g>
+<!-- kvm -->
+<g id="node4" class="node">
+<title>kvm</title>
+<polygon fill="#bbdefb" stroke="black" points="149.99,-297.6 16.01,-297.6 16.01,-236.8 149.99,-236.8 149.99,-297.6"/>
+<text xml:space="preserve" text-anchor="middle" x="83" y="-283.7" font-family="Arial" font-size="11.00">KVM</text>
+<text xml:space="preserve" text-anchor="middle" x="83" y="-270.5" font-family="Arial" font-size="11.00">Гипервизор ядра Linux</text>
+<text xml:space="preserve" text-anchor="middle" x="83" y="-257.3" font-family="Arial" font-size="11.00">Аппаратная</text>
+<text xml:space="preserve" text-anchor="middle" x="83" y="-244.1" font-family="Arial" font-size="11.00">виртуализация</text>
+</g>
+<!-- tf&#45;&gt;kvm -->
+<g id="edge3" class="edge">
+<title>tf-&gt;kvm</title>
+<path fill="none" stroke="black" d="M588.95,-436C432.59,-436 83,-436 83,-436 83,-436 83,-309.28 83,-309.28"/>
+<polygon fill="black" stroke="black" points="86.5,-309.28 83,-299.28 79.5,-309.28 86.5,-309.28"/>
+</g>
+<!-- keepalived -->
+<g id="node7" class="node">
+<title>keepalived</title>
+<polygon fill="#a5d6a7" stroke="black" points="993.37,-304.2 882.63,-304.2 882.63,-230.2 993.37,-230.2 993.37,-304.2"/>
+<text xml:space="preserve" text-anchor="middle" x="938" y="-290.3" font-family="Arial" font-size="11.00">Keepalived</text>
+<text xml:space="preserve" text-anchor="middle" x="938" y="-277.1" font-family="Arial" font-size="11.00">VRRP (RFC 5798)</text>
+<text xml:space="preserve" text-anchor="middle" x="938" y="-263.9" font-family="Arial" font-size="11.00">Плавающий IP</text>
+<text xml:space="preserve" text-anchor="middle" x="938" y="-250.7" font-family="Arial" font-size="11.00">Детекция отказов</text>
+<text xml:space="preserve" text-anchor="middle" x="938" y="-237.5" font-family="Arial" font-size="11.00">advert_int: 1 сек</text>
+</g>
+<!-- ansible&#45;&gt;keepalived -->
+<g id="edge6" class="edge">
+<title>ansible-&gt;keepalived</title>
+<path fill="none" stroke="black" d="M900.86,-392.09C900.86,-392.09 900.86,-316.11 900.86,-316.11"/>
+<polygon fill="black" stroke="black" points="904.37,-316.11 900.87,-306.11 897.37,-316.11 904.37,-316.11"/>
+</g>
+<!-- nginx -->
+<g id="node8" class="node">
+<title>nginx</title>
+<polygon fill="#a5d6a7" stroke="black" points="1140.67,-304.2 1051.33,-304.2 1051.33,-230.2 1140.67,-230.2 1140.67,-304.2"/>
+<text xml:space="preserve" text-anchor="middle" x="1096" y="-290.3" font-family="Arial" font-size="11.00">Nginx</text>
+<text xml:space="preserve" text-anchor="middle" x="1096" y="-277.1" font-family="Arial" font-size="11.00">Reverse Proxy</text>
+<text xml:space="preserve" text-anchor="middle" x="1096" y="-263.9" font-family="Arial" font-size="11.00">Балансировка</text>
+<text xml:space="preserve" text-anchor="middle" x="1096" y="-250.7" font-family="Arial" font-size="11.00">round-robin</text>
+<text xml:space="preserve" text-anchor="middle" x="1096" y="-237.5" font-family="Arial" font-size="11.00">Статика: alias</text>
+</g>
+<!-- ansible&#45;&gt;nginx -->
+<g id="edge7" class="edge">
+<title>ansible-&gt;nginx</title>
+<path fill="none" stroke="black" d="M919.48,-410C990.3,-410 1096,-410 1096,-410 1096,-410 1096,-315.86 1096,-315.86"/>
+<polygon fill="black" stroke="black" points="1099.5,-315.86 1096,-305.86 1092.5,-315.86 1099.5,-315.86"/>
+</g>
+<!-- uwsgi -->
+<g id="node9" class="node">
+<title>uwsgi</title>
+<polygon fill="#a5d6a7" stroke="black" points="1309.07,-304.2 1198.93,-304.2 1198.93,-230.2 1309.07,-230.2 1309.07,-304.2"/>
+<text xml:space="preserve" text-anchor="middle" x="1254" y="-290.3" font-family="Arial" font-size="11.00">uWSGI</text>
+<text xml:space="preserve" text-anchor="middle" x="1254" y="-277.1" font-family="Arial" font-size="11.00">Application Server</text>
+<text xml:space="preserve" text-anchor="middle" x="1254" y="-263.9" font-family="Arial" font-size="11.00">WSGI-протокол</text>
+<text xml:space="preserve" text-anchor="middle" x="1254" y="-250.7" font-family="Arial" font-size="11.00">4 worker процесса</text>
+<text xml:space="preserve" text-anchor="middle" x="1254" y="-237.5" font-family="Arial" font-size="11.00">http-socket :8000</text>
+</g>
+<!-- ansible&#45;&gt;uwsgi -->
+<g id="edge8" class="edge">
+<title>ansible-&gt;uwsgi</title>
+<path fill="none" stroke="black" d="M919.47,-427C1031.27,-427 1254,-427 1254,-427 1254,-427 1254,-316.18 1254,-316.18"/>
+<polygon fill="black" stroke="black" points="1257.5,-316.18 1254,-306.18 1250.5,-316.18 1257.5,-316.18"/>
+</g>
+<!-- django -->
+<g id="node10" class="node">
+<title>django</title>
+<polygon fill="#a5d6a7" stroke="black" points="1473.24,-297.6 1366.76,-297.6 1366.76,-236.8 1473.24,-236.8 1473.24,-297.6"/>
+<text xml:space="preserve" text-anchor="middle" x="1420" y="-283.7" font-family="Arial" font-size="11.00">Django</text>
+<text xml:space="preserve" text-anchor="middle" x="1420" y="-270.5" font-family="Arial" font-size="11.00">Web Framework</text>
+<text xml:space="preserve" text-anchor="middle" x="1420" y="-257.3" font-family="Arial" font-size="11.00">ORM, URL routing</text>
+<text xml:space="preserve" text-anchor="middle" x="1420" y="-244.1" font-family="Arial" font-size="11.00">Генерация HTML</text>
+</g>
+<!-- ansible&#45;&gt;django -->
+<g id="edge9" class="edge">
+<title>ansible-&gt;django</title>
+<path fill="none" stroke="black" d="M919.4,-445C1065.99,-445 1420,-445 1420,-445 1420,-445 1420,-309.28 1420,-309.28"/>
+<polygon fill="black" stroke="black" points="1423.5,-309.28 1420,-299.28 1416.5,-309.28 1423.5,-309.28"/>
+</g>
+<!-- postgres -->
+<g id="node11" class="node">
+<title>postgres</title>
+<polygon fill="#a5d6a7" stroke="black" points="1642.37,-297.6 1531.63,-297.6 1531.63,-236.8 1642.37,-236.8 1642.37,-297.6"/>
+<text xml:space="preserve" text-anchor="middle" x="1587" y="-283.7" font-family="Arial" font-size="11.00">PostgreSQL 14</text>
+<text xml:space="preserve" text-anchor="middle" x="1587" y="-270.5" font-family="Arial" font-size="11.00">Реляционная СУБД</text>
+<text xml:space="preserve" text-anchor="middle" x="1587" y="-257.3" font-family="Arial" font-size="11.00">ACID-транзакции</text>
+<text xml:space="preserve" text-anchor="middle" x="1587" y="-244.1" font-family="Arial" font-size="11.00">listen_addresses: *</text>
+</g>
+<!-- ansible&#45;&gt;postgres -->
+<g id="edge10" class="edge">
+<title>ansible-&gt;postgres</title>
+<path fill="none" stroke="black" d="M919.55,-462C1096.36,-462 1587,-462 1587,-462 1587,-462 1587,-309.58 1587,-309.58"/>
+<polygon fill="black" stroke="black" points="1590.5,-309.58 1587,-299.58 1583.5,-309.58 1590.5,-309.58"/>
+</g>
+<!-- iscsi_tech -->
+<g id="node12" class="node">
+<title>iscsi_tech</title>
+<polygon fill="#a5d6a7" stroke="black" points="343.9,-297.6 208.1,-297.6 208.1,-236.8 343.9,-236.8 343.9,-297.6"/>
+<text xml:space="preserve" text-anchor="middle" x="276" y="-283.7" font-family="Arial" font-size="11.00">iSCSI</text>
+<text xml:space="preserve" text-anchor="middle" x="276" y="-270.5" font-family="Arial" font-size="11.00">Блочный доступ</text>
+<text xml:space="preserve" text-anchor="middle" x="276" y="-257.3" font-family="Arial" font-size="11.00">по сети TCP/3260</text>
+<text xml:space="preserve" text-anchor="middle" x="276" y="-244.1" font-family="Arial" font-size="11.00">CHAP-аутентификация</text>
+</g>
+<!-- ansible&#45;&gt;iscsi_tech -->
+<g id="edge11" class="edge">
+<title>ansible-&gt;iscsi_tech</title>
+<path fill="none" stroke="black" d="M800.87,-392.25C800.87,-381 800.87,-372 800.87,-372 800.87,-372 276,-372 276,-372 276,-372 276,-309.59 276,-309.59"/>
+<polygon fill="black" stroke="black" points="279.5,-309.59 276,-299.59 272.5,-309.59 279.5,-309.59"/>
+</g>
+<!-- lvm -->
+<g id="node13" class="node">
+<title>lvm</title>
+<polygon fill="#a5d6a7" stroke="black" points="518.43,-297.6 401.57,-297.6 401.57,-236.8 518.43,-236.8 518.43,-297.6"/>
+<text xml:space="preserve" text-anchor="middle" x="460" y="-283.7" font-family="Arial" font-size="11.00">LVM</text>
+<text xml:space="preserve" text-anchor="middle" x="460" y="-270.5" font-family="Arial" font-size="11.00">Управление томами</text>
+<text xml:space="preserve" text-anchor="middle" x="460" y="-257.3" font-family="Arial" font-size="11.00">vg_iscsi/lv_static</text>
+<text xml:space="preserve" text-anchor="middle" x="460" y="-244.1" font-family="Arial" font-size="11.00">4 ГБ</text>
+</g>
+<!-- ansible&#45;&gt;lvm -->
+<g id="edge12" class="edge">
+<title>ansible-&gt;lvm</title>
+<path fill="none" stroke="black" d="M806.83,-392.03C806.83,-371.71 806.83,-352 806.83,-352 806.83,-352 460,-352 460,-352 460,-352 460,-309.33 460,-309.33"/>
+<polygon fill="black" stroke="black" points="463.5,-309.33 460,-299.33 456.5,-309.33 463.5,-309.33"/>
+</g>
+<!-- dlm -->
+<g id="node14" class="node">
+<title>dlm</title>
+<polygon fill="#a5d6a7" stroke="black" points="671.43,-304.2 576.57,-304.2 576.57,-230.2 671.43,-230.2 671.43,-304.2"/>
+<text xml:space="preserve" text-anchor="middle" x="624" y="-290.3" font-family="Arial" font-size="11.00">DLM</text>
+<text xml:space="preserve" text-anchor="middle" x="624" y="-277.1" font-family="Arial" font-size="11.00">Distributed Lock</text>
+<text xml:space="preserve" text-anchor="middle" x="624" y="-263.9" font-family="Arial" font-size="11.00">Manager</text>
+<text xml:space="preserve" text-anchor="middle" x="624" y="-250.7" font-family="Arial" font-size="11.00">Координация</text>
+<text xml:space="preserve" text-anchor="middle" x="624" y="-237.5" font-family="Arial" font-size="11.00">блокировок</text>
+</g>
+<!-- ansible&#45;&gt;dlm -->
+<g id="edge13" class="edge">
+<title>ansible-&gt;dlm</title>
+<path fill="none" stroke="black" d="M812.8,-392.08C812.8,-363.31 812.8,-331 812.8,-331 812.8,-331 630.36,-331 630.36,-331 630.36,-331 630.36,-316.2 630.36,-316.2"/>
+<polygon fill="black" stroke="black" points="633.86,-316.2 630.36,-306.2 626.86,-316.2 633.86,-316.2"/>
+</g>
+<!-- gfs2_fs -->
+<g id="node15" class="node">
+<title>gfs2_fs</title>
+<polygon fill="#a5d6a7" stroke="black" points="824.73,-310.8 729.27,-310.8 729.27,-223.6 824.73,-223.6 824.73,-310.8"/>
+<text xml:space="preserve" text-anchor="middle" x="777" y="-296.9" font-family="Arial" font-size="11.00">GFS2</text>
+<text xml:space="preserve" text-anchor="middle" x="777" y="-283.7" font-family="Arial" font-size="11.00">Кластерная ФС</text>
+<text xml:space="preserve" text-anchor="middle" x="777" y="-270.5" font-family="Arial" font-size="11.00">lock_dlm</text>
+<text xml:space="preserve" text-anchor="middle" x="777" y="-257.3" font-family="Arial" font-size="11.00">2 журнала</text>
+<text xml:space="preserve" text-anchor="middle" x="777" y="-244.1" font-family="Arial" font-size="11.00">Одновременный</text>
+<text xml:space="preserve" text-anchor="middle" x="777" y="-230.9" font-family="Arial" font-size="11.00">доступ</text>
+</g>
+<!-- ansible&#45;&gt;gfs2_fs -->
+<g id="edge14" class="edge">
+<title>ansible-&gt;gfs2_fs</title>
+<path fill="none" stroke="black" d="M818.76,-392.09C818.76,-392.09 818.76,-322.7 818.76,-322.7"/>
+<polygon fill="black" stroke="black" points="822.26,-322.7 818.76,-312.7 815.26,-322.7 822.26,-322.7"/>
+</g>
+<!-- libvirt -->
+<g id="node5" class="node">
+<title>libvirt</title>
+<polygon fill="#bbdefb" stroke="black" points="144.19,-180.6 21.81,-180.6 21.81,-119.8 144.19,-119.8 144.19,-180.6"/>
+<text xml:space="preserve" text-anchor="middle" x="83" y="-166.7" font-family="Arial" font-size="11.00">libvirt</text>
+<text xml:space="preserve" text-anchor="middle" x="83" y="-153.5" font-family="Arial" font-size="11.00">API управления</text>
+<text xml:space="preserve" text-anchor="middle" x="83" y="-140.3" font-family="Arial" font-size="11.00">virsh, virt-install</text>
+<text xml:space="preserve" text-anchor="middle" x="83" y="-127.1" font-family="Arial" font-size="11.00">Пул хранения default</text>
+</g>
+<!-- kvm&#45;&gt;libvirt -->
+<g id="edge4" class="edge">
+<title>kvm-&gt;libvirt</title>
+<path fill="none" stroke="black" d="M83,-236.46C83,-236.46 83,-192.25 83,-192.25"/>
+<polygon fill="black" stroke="black" points="86.5,-192.25 83,-182.25 79.5,-192.25 86.5,-192.25"/>
+</g>
+<!-- qemu -->
+<g id="node6" class="node">
+<title>qemu</title>
+<polygon fill="#bbdefb" stroke="black" points="144.48,-76.8 21.52,-76.8 21.52,-16 144.48,-16 144.48,-76.8"/>
+<text xml:space="preserve" text-anchor="middle" x="83" y="-62.9" font-family="Arial" font-size="11.00">QEMU</text>
+<text xml:space="preserve" text-anchor="middle" x="83" y="-49.7" font-family="Arial" font-size="11.00">Эмуляция устройств</text>
+<text xml:space="preserve" text-anchor="middle" x="83" y="-36.5" font-family="Arial" font-size="11.00">virtio-драйверы</text>
+<text xml:space="preserve" text-anchor="middle" x="83" y="-23.3" font-family="Arial" font-size="11.00">Образы qcow2</text>
+</g>
+<!-- libvirt&#45;&gt;qemu -->
+<g id="edge5" class="edge">
+<title>libvirt-&gt;qemu</title>
+<path fill="none" stroke="black" d="M83,-119.34C83,-119.34 83,-88.48 83,-88.48"/>
+<polygon fill="black" stroke="black" points="86.5,-88.48 83,-78.48 79.5,-88.48 86.5,-88.48"/>
+</g>
+</g>
+</svg>

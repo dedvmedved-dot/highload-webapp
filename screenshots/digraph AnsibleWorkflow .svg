@@ -1,0 +1,139 @@
+<svg width="223pt" height="895pt" viewBox="0.00 0.00 223.00 895.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 891.45)">
+<title>AnsibleWorkflow</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-891.45 219.06,-891.45 219.06,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-867.25" font-family="Arial" font-size="18.00">Процесс работы Ansible</text>
+<g id="clust1" class="cluster">
+<title>cluster_roles</title>
+<polygon fill="#e8f0fe" stroke="black" points="15.53,-73.25 15.53,-644.85 199.53,-644.85 199.53,-73.25 15.53,-73.25"/>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-629.15" font-family="Arial" font-size="13.00">Роли Ansible</text>
+</g>
+<!-- inventory -->
+<g id="node1" class="node">
+<title>inventory</title>
+<path fill="#fff9c4" stroke="black" d="M165.84,-850.85C165.84,-854.72 139.71,-857.85 107.53,-857.85 75.36,-857.85 49.22,-854.72 49.22,-850.85 49.22,-850.85 49.22,-787.85 49.22,-787.85 49.22,-783.99 75.36,-780.85 107.53,-780.85 139.71,-780.85 165.84,-783.99 165.84,-787.85 165.84,-787.85 165.84,-850.85 165.84,-850.85"/>
+<path fill="none" stroke="black" d="M165.84,-850.85C165.84,-846.99 139.71,-843.85 107.53,-843.85 75.36,-843.85 49.22,-846.99 49.22,-850.85"/>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-834.35" font-family="Arial" font-size="10.00">inventory.ini</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-822.35" font-family="Arial" font-size="10.00">6 серверов</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-810.35" font-family="Arial" font-size="10.00">3 группы:</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-798.35" font-family="Arial" font-size="10.00">[nginx], [backend], [db]</text>
+</g>
+<!-- playbook -->
+<g id="node2" class="node">
+<title>playbook</title>
+<polygon fill="#fff9c4" stroke="black" points="139.26,-744.85 69.8,-744.85 69.8,-652.85 145.26,-652.85 145.26,-738.85 139.26,-744.85"/>
+<polyline fill="none" stroke="black" points="139.26,-744.85 139.26,-738.85"/>
+<polyline fill="none" stroke="black" points="145.26,-738.85 139.26,-738.85"/>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-731.85" font-family="Arial" font-size="10.00">deploy.yml</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-719.85" font-family="Arial" font-size="10.00">5 ролей:</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-707.85" font-family="Arial" font-size="10.00">1. iscsi-target</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-695.85" font-family="Arial" font-size="10.00">2. gfs2</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-683.85" font-family="Arial" font-size="10.00">3. backend</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-671.85" font-family="Arial" font-size="10.00">4. nginx</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-659.85" font-family="Arial" font-size="10.00">5. db</text>
+</g>
+<!-- inventory&#45;&gt;playbook -->
+<g id="edge1" class="edge">
+<title>inventory-&gt;playbook</title>
+<path fill="none" stroke="black" d="M107.53,-780.56C107.53,-780.56 107.53,-756.66 107.53,-756.66"/>
+<polygon fill="black" stroke="black" points="111.03,-756.66 107.53,-746.66 104.03,-756.66 111.03,-756.66"/>
+</g>
+<!-- role1 -->
+<g id="node3" class="node">
+<title>role1</title>
+<polygon fill="#bbdefb" stroke="black" points="175.54,-613.25 39.52,-613.25 39.52,-545.25 175.54,-545.25 175.54,-613.25"/>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-600.25" font-family="Arial" font-size="10.00">iscsi-target</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-588.25" font-family="Arial" font-size="10.00">• Установка tgt</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-576.25" font-family="Arial" font-size="10.00">• Создание LVM</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-564.25" font-family="Arial" font-size="10.00">• Настройка target</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-552.25" font-family="Arial" font-size="10.00">• CHAP-аутентификация</text>
+</g>
+<!-- playbook&#45;&gt;role1 -->
+<g id="edge2" class="edge">
+<title>playbook-&gt;role1</title>
+<path fill="none" stroke="black" d="M107.53,-652.61C107.53,-652.61 107.53,-625.01 107.53,-625.01"/>
+<polygon fill="black" stroke="black" points="111.03,-625.01 107.53,-615.01 104.03,-625.01 111.03,-625.01"/>
+</g>
+<!-- role2 -->
+<g id="node4" class="node">
+<title>role2</title>
+<polygon fill="#bbdefb" stroke="black" points="191.94,-509.25 23.13,-509.25 23.13,-429.25 191.94,-429.25 191.94,-509.25"/>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-496.25" font-family="Arial" font-size="10.00">gfs2</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-484.25" font-family="Arial" font-size="10.00">• Установка ядра</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-472.25" font-family="Arial" font-size="10.00">• Загрузка модулей DLM, GFS2</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-460.25" font-family="Arial" font-size="10.00">• Подключение iSCSI initiator</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-448.25" font-family="Arial" font-size="10.00">• Создание GFS2 ФС</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-436.25" font-family="Arial" font-size="10.00">• Монтирование</text>
+</g>
+<!-- role1&#45;&gt;role2 -->
+<g id="edge3" class="edge">
+<title>role1-&gt;role2</title>
+<path fill="none" stroke="black" d="M107.53,-545.05C107.53,-545.05 107.53,-521.12 107.53,-521.12"/>
+<polygon fill="black" stroke="black" points="111.03,-521.12 107.53,-511.12 104.03,-521.12 111.03,-521.12"/>
+</g>
+<!-- role3 -->
+<g id="node5" class="node">
+<title>role3</title>
+<polygon fill="#bbdefb" stroke="black" points="171.93,-393.25 43.13,-393.25 43.13,-313.25 171.93,-313.25 171.93,-393.25"/>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-380.25" font-family="Arial" font-size="10.00">backend</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-368.25" font-family="Arial" font-size="10.00">• Python venv</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-356.25" font-family="Arial" font-size="10.00">• Django проект</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-344.25" font-family="Arial" font-size="10.00">• Конфигурация uWSGI</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-332.25" font-family="Arial" font-size="10.00">• Systemd unit</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-320.25" font-family="Arial" font-size="10.00">• Static root на GFS2</text>
+</g>
+<!-- role2&#45;&gt;role3 -->
+<g id="edge4" class="edge">
+<title>role2-&gt;role3</title>
+<path fill="none" stroke="black" d="M107.53,-429.01C107.53,-429.01 107.53,-404.94 107.53,-404.94"/>
+<polygon fill="black" stroke="black" points="111.03,-404.94 107.53,-394.94 104.03,-404.94 111.03,-404.94"/>
+</g>
+<!-- role4 -->
+<g id="node6" class="node">
+<title>role4</title>
+<polygon fill="#bbdefb" stroke="black" points="168.05,-277.25 47.01,-277.25 47.01,-197.25 168.05,-197.25 168.05,-277.25"/>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-264.25" font-family="Arial" font-size="10.00">nginx</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-252.25" font-family="Arial" font-size="10.00">• Установка Nginx</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-240.25" font-family="Arial" font-size="10.00">• Конфигурация</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-228.25" font-family="Arial" font-size="10.00">  балансировщика</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-216.25" font-family="Arial" font-size="10.00">• Keepalived MASTER</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-204.25" font-family="Arial" font-size="10.00">• Keepalived BACKUP</text>
+</g>
+<!-- role3&#45;&gt;role4 -->
+<g id="edge5" class="edge">
+<title>role3-&gt;role4</title>
+<path fill="none" stroke="black" d="M107.53,-313.01C107.53,-313.01 107.53,-288.94 107.53,-288.94"/>
+<polygon fill="black" stroke="black" points="111.03,-288.94 107.53,-278.94 104.03,-288.94 111.03,-288.94"/>
+</g>
+<!-- role5 -->
+<g id="node7" class="node">
+<title>role5</title>
+<polygon fill="#bbdefb" stroke="black" points="183.34,-161.25 31.72,-161.25 31.72,-81.25 183.34,-81.25 183.34,-161.25"/>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-148.25" font-family="Arial" font-size="10.00">db</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-136.25" font-family="Arial" font-size="10.00">• Установка PostgreSQL</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-124.25" font-family="Arial" font-size="10.00">• Создание БД django_db</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-112.25" font-family="Arial" font-size="10.00">• Пользователь django_user</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-100.25" font-family="Arial" font-size="10.00">• listen_addresses = '*'</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-88.25" font-family="Arial" font-size="10.00">• pg_hba.conf</text>
+</g>
+<!-- role4&#45;&gt;role5 -->
+<g id="edge6" class="edge">
+<title>role4-&gt;role5</title>
+<path fill="none" stroke="black" d="M107.53,-197.01C107.53,-197.01 107.53,-172.94 107.53,-172.94"/>
+<polygon fill="black" stroke="black" points="111.03,-172.94 107.53,-162.94 104.03,-172.94 111.03,-172.94"/>
+</g>
+<!-- result -->
+<g id="node8" class="node">
+<title>result</title>
+<ellipse fill="#c8e6c9" stroke="black" cx="107.53" cy="-22.63" rx="52.57" ry="22.63"/>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-25.63" font-family="Arial" font-size="10.00">Все серверы</text>
+<text xml:space="preserve" text-anchor="middle" x="107.53" y="-13.63" font-family="Arial" font-size="10.00">настроены</text>
+</g>
+<!-- role5&#45;&gt;result -->
+<g id="edge7" class="edge">
+<title>role5-&gt;result</title>
+<path fill="none" stroke="black" d="M107.53,-80.85C107.53,-80.85 107.53,-57.09 107.53,-57.09"/>
+<polygon fill="black" stroke="black" points="111.03,-57.09 107.53,-47.09 104.03,-57.09 111.03,-57.09"/>
+</g>
+</g>
+</svg>

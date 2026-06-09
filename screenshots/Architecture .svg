@@ -1,0 +1,261 @@
+<svg width="833pt" height="1029pt" viewBox="0.00 0.00 833.00 1029.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 1025.05)">
+<title>Architecture</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-1025.05 829,-1025.05 829,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="412.5" y="-1000.85" font-family="Arial" font-size="18.00">Архитектура отказоустойчивой инфраструктуры</text>
+<g id="clust1" class="cluster">
+<title>cluster_layer1</title>
+<polygon fill="#fce8e6" stroke="#ea4335" points="243,-593.07 243,-893.01 556,-893.01 556,-593.07 243,-593.07"/>
+<text xml:space="preserve" text-anchor="middle" x="399.5" y="-876.41" font-family="Arial" font-size="14.00">Слой 1: Балансировка (Frontend)</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_nginx</title>
+<polygon fill="#ffcdd2" stroke="#ea4335" points="251,-601.07 251,-715.87 548,-715.87 548,-601.07 251,-601.07"/>
+<text xml:space="preserve" text-anchor="middle" x="399.5" y="-699.27" font-family="Arial" font-size="14.00">Nginx Cluster</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_layer2</title>
+<polygon fill="#fff3e0" stroke="#fb8c00" points="350,-400.07 350,-542.47 637,-542.47 637,-400.07 350,-400.07"/>
+<text xml:space="preserve" text-anchor="middle" x="493.5" y="-525.87" font-family="Arial" font-size="14.00">Слой 2: Приложения (Backend)</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_backend</title>
+<polygon fill="#ffe0b2" stroke="#fb8c00" points="358,-408.07 358,-509.67 629,-509.67 629,-408.07 358,-408.07"/>
+<text xml:space="preserve" text-anchor="middle" x="493.5" y="-493.07" font-family="Arial" font-size="14.00">Django + uWSGI Cluster</text>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_layer3</title>
+<polygon fill="#f3e5f5" stroke="#9c27b0" points="8,-8 8,-349.47 338,-349.47 338,-8 8,-8"/>
+<text xml:space="preserve" text-anchor="middle" x="173" y="-332.87" font-family="Arial" font-size="14.00">Слой 3: Данные (Storage)</text>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster_gfs2</title>
+<polygon fill="#e1bee7" stroke="#9c27b0" points="16,-16 16,-316.67 169,-316.67 169,-16 16,-16"/>
+<text xml:space="preserve" text-anchor="middle" x="92.5" y="-300.07" font-family="Arial" font-size="14.00">GFS2 Cluster Storage</text>
+</g>
+<g id="clust7" class="cluster">
+<title>cluster_mgmt</title>
+<polygon fill="#e0e0e0" stroke="#616161" points="577,-789.54 577,-877.94 817,-877.94 817,-789.54 577,-789.54"/>
+<text xml:space="preserve" text-anchor="middle" x="697" y="-861.34" font-family="Arial" font-size="14.00">Infrastructure as Code</text>
+</g>
+<!-- user -->
+<g id="node1" class="node">
+<title>user</title>
+<ellipse fill="#e8f0fe" stroke="black" cx="388" cy="-967.13" rx="63.18" ry="24.32"/>
+<text xml:space="preserve" text-anchor="middle" x="388" y="-970.43" font-family="Arial" font-size="11.00">Пользователь</text>
+<text xml:space="preserve" text-anchor="middle" x="388" y="-957.23" font-family="Arial" font-size="11.00">HTTP-запрос</text>
+</g>
+<!-- vip -->
+<g id="node2" class="node">
+<title>vip</title>
+<polygon fill="#fff9c4" stroke="black" points="478.94,-821.34 433.47,-860.21 342.53,-860.21 297.06,-821.34 342.53,-782.48 433.47,-782.47 478.94,-821.34"/>
+<text xml:space="preserve" text-anchor="middle" x="388" y="-831.24" font-family="Arial" font-size="11.00">Виртуальный IP</text>
+<text xml:space="preserve" text-anchor="middle" x="388" y="-818.04" font-family="Arial" font-size="11.00">192.168.122.100</text>
+<text xml:space="preserve" text-anchor="middle" x="388" y="-804.84" font-family="Arial" font-size="11.00">(Keepalived VRRP)</text>
+</g>
+<!-- user&#45;&gt;vip -->
+<g id="edge1" class="edge">
+<title>user-&gt;vip</title>
+<path fill="none" stroke="#ea4335" stroke-width="2" d="M388,-942.4C388,-942.4 388,-873.53 388,-873.53"/>
+<polygon fill="#ea4335" stroke="#ea4335" stroke-width="2" points="391.5,-873.53 388,-863.53 384.5,-873.53 391.5,-873.53"/>
+<text xml:space="preserve" text-anchor="middle" x="428.83" y="-905.21" font-family="Times,serif" font-size="14.00">HTTP-запрос</text>
+</g>
+<!-- nginx1 -->
+<g id="node3" class="node">
+<title>nginx1</title>
+<polygon fill="#ef9a9a" stroke="black" points="539.54,-683.07 428.46,-683.07 428.46,-609.07 539.54,-609.07 539.54,-683.07"/>
+<text xml:space="preserve" text-anchor="middle" x="484" y="-669.17" font-family="Arial" font-size="11.00">nginx-1</text>
+<text xml:space="preserve" text-anchor="middle" x="484" y="-655.97" font-family="Arial" font-size="11.00">MASTER</text>
+<text xml:space="preserve" text-anchor="middle" x="484" y="-642.77" font-family="Arial" font-size="11.00">priority=100</text>
+<text xml:space="preserve" text-anchor="middle" x="484" y="-629.57" font-family="Arial" font-size="11.00">Nginx + Keepalived</text>
+<text xml:space="preserve" text-anchor="middle" x="484" y="-616.37" font-family="Arial" font-size="11.00">.122.7</text>
+</g>
+<!-- vip&#45;&gt;nginx1 -->
+<g id="edge2" class="edge">
+<title>vip-&gt;nginx1</title>
+<path fill="none" stroke="#34a853" stroke-width="2" d="M453.7,-799.14C453.7,-799.14 453.7,-696.43 453.7,-696.43"/>
+<polygon fill="#34a853" stroke="#34a853" stroke-width="2" points="457.2,-696.43 453.7,-686.43 450.2,-696.43 457.2,-696.43"/>
+<text xml:space="preserve" text-anchor="middle" x="495.39" y="-744.87" font-family="Times,serif" font-size="14.00">VRRP</text>
+<text xml:space="preserve" text-anchor="middle" x="495.39" y="-728.07" font-family="Times,serif" font-size="14.00">MASTER</text>
+</g>
+<!-- nginx2 -->
+<g id="node4" class="node">
+<title>nginx2</title>
+<polygon fill="#ef9a9a" stroke="black" points="370.54,-683.07 259.46,-683.07 259.46,-609.07 370.54,-609.07 370.54,-683.07"/>
+<text xml:space="preserve" text-anchor="middle" x="315" y="-669.17" font-family="Arial" font-size="11.00">nginx-2</text>
+<text xml:space="preserve" text-anchor="middle" x="315" y="-655.97" font-family="Arial" font-size="11.00">BACKUP</text>
+<text xml:space="preserve" text-anchor="middle" x="315" y="-642.77" font-family="Arial" font-size="11.00">priority=90</text>
+<text xml:space="preserve" text-anchor="middle" x="315" y="-629.57" font-family="Arial" font-size="11.00">Nginx + Keepalived</text>
+<text xml:space="preserve" text-anchor="middle" x="315" y="-616.37" font-family="Arial" font-size="11.00">.122.214</text>
+</g>
+<!-- vip&#45;&gt;nginx2 -->
+<g id="edge3" class="edge">
+<title>vip-&gt;nginx2</title>
+<path fill="none" stroke="#34a853" stroke-dasharray="5,2" d="M333.8,-789.6C333.8,-789.6 333.8,-694.87 333.8,-694.87"/>
+<polygon fill="#34a853" stroke="#34a853" points="337.3,-694.87 333.8,-684.87 330.3,-694.87 337.3,-694.87"/>
+<text xml:space="preserve" text-anchor="middle" x="351.4" y="-744.87" font-family="Times,serif" font-size="14.00">VRRP</text>
+<text xml:space="preserve" text-anchor="middle" x="351.4" y="-728.07" font-family="Times,serif" font-size="14.00">BACKUP</text>
+</g>
+<!-- be1 -->
+<g id="node5" class="node">
+<title>be1</title>
+<polygon fill="#ffcc80" stroke="black" points="621.42,-476.87 522.58,-476.87 522.58,-416.07 621.42,-416.07 621.42,-476.87"/>
+<text xml:space="preserve" text-anchor="middle" x="572" y="-462.97" font-family="Arial" font-size="11.00">backend-1</text>
+<text xml:space="preserve" text-anchor="middle" x="572" y="-449.77" font-family="Arial" font-size="11.00">Django + uWSGI</text>
+<text xml:space="preserve" text-anchor="middle" x="572" y="-436.57" font-family="Arial" font-size="11.00">4 workers :8000</text>
+<text xml:space="preserve" text-anchor="middle" x="572" y="-423.38" font-family="Arial" font-size="11.00">.122.238</text>
+</g>
+<!-- nginx1&#45;&gt;be1 -->
+<g id="edge4" class="edge">
+<title>nginx1-&gt;be1</title>
+<path fill="none" stroke="#4285f4" d="M533.89,-609C533.89,-609 533.89,-488.65 533.89,-488.65"/>
+<polygon fill="#4285f4" stroke="#4285f4" points="537.39,-488.65 533.89,-478.65 530.39,-488.65 537.39,-488.65"/>
+<text xml:space="preserve" text-anchor="middle" x="592.44" y="-571.47" font-family="Times,serif" font-size="14.00">proxy_pass</text>
+<text xml:space="preserve" text-anchor="middle" x="592.44" y="-554.67" font-family="Times,serif" font-size="14.00">round-robin</text>
+</g>
+<!-- be2 -->
+<g id="node6" class="node">
+<title>be2</title>
+<polygon fill="#ffcc80" stroke="black" points="464.42,-476.87 365.58,-476.87 365.58,-416.07 464.42,-416.07 464.42,-476.87"/>
+<text xml:space="preserve" text-anchor="middle" x="415" y="-462.97" font-family="Arial" font-size="11.00">backend-2</text>
+<text xml:space="preserve" text-anchor="middle" x="415" y="-449.77" font-family="Arial" font-size="11.00">Django + uWSGI</text>
+<text xml:space="preserve" text-anchor="middle" x="415" y="-436.57" font-family="Arial" font-size="11.00">4 workers :8000</text>
+<text xml:space="preserve" text-anchor="middle" x="415" y="-423.38" font-family="Arial" font-size="11.00">.122.75</text>
+</g>
+<!-- nginx1&#45;&gt;be2 -->
+<g id="edge5" class="edge">
+<title>nginx1-&gt;be2</title>
+<path fill="none" stroke="#4285f4" d="M446.44,-609C446.44,-609 446.44,-488.65 446.44,-488.65"/>
+<polygon fill="#4285f4" stroke="#4285f4" points="449.94,-488.65 446.44,-478.65 442.94,-488.65 449.94,-488.65"/>
+<text xml:space="preserve" text-anchor="middle" x="462.44" y="-571.47" font-family="Times,serif" font-size="14.00">proxy_pass</text>
+<text xml:space="preserve" text-anchor="middle" x="462.44" y="-554.67" font-family="Times,serif" font-size="14.00">round-robin</text>
+</g>
+<!-- nginx2&#45;&gt;be1 -->
+<g id="edge6" class="edge">
+<title>nginx2-&gt;be1</title>
+<path fill="none" stroke="#4285f4" stroke-dasharray="5,2" d="M341.87,-608.86C341.87,-579.34 341.87,-543 341.87,-543 341.87,-543 528.23,-543 528.23,-543 528.23,-543 528.23,-488.8 528.23,-488.8"/>
+<polygon fill="#4285f4" stroke="#4285f4" points="531.73,-488.8 528.23,-478.8 524.73,-488.8 531.73,-488.8"/>
+<text xml:space="preserve" text-anchor="middle" x="333.89" y="-563.07" font-family="Times,serif" font-size="14.00">proxy_pass</text>
+</g>
+<!-- nginx2&#45;&gt;be2 -->
+<g id="edge7" class="edge">
+<title>nginx2-&gt;be2</title>
+<path fill="none" stroke="#4285f4" stroke-dasharray="5,2" d="M353.72,-608.61C353.72,-546.99 353.72,-431 353.72,-431 353.72,-431 354.87,-431 354.87,-431"/>
+<polygon fill="#4285f4" stroke="#4285f4" points="353.73,-434.5 363.73,-431 353.73,-427.5 353.73,-434.5"/>
+<text xml:space="preserve" text-anchor="middle" x="206.89" y="-563.07" font-family="Times,serif" font-size="14.00">proxy_pass</text>
+</g>
+<!-- gfs2_fs -->
+<g id="node8" class="node">
+<title>gfs2_fs</title>
+<path fill="#ce93d8" stroke="black" d="M160.59,-100C160.59,-104.19 130.3,-107.6 93,-107.6 55.7,-107.6 25.41,-104.19 25.41,-100 25.41,-100 25.41,-31.6 25.41,-31.6 25.41,-27.41 55.7,-24 93,-24 130.3,-24 160.59,-27.41 160.59,-31.6 160.59,-31.6 160.59,-100 160.59,-100"/>
+<path fill="none" stroke="black" d="M160.59,-100C160.59,-95.81 130.3,-92.4 93,-92.4 55.7,-92.4 25.41,-95.81 25.41,-100"/>
+<text xml:space="preserve" text-anchor="middle" x="93" y="-82.3" font-family="Arial" font-size="11.00">GFS2 Filesystem</text>
+<text xml:space="preserve" text-anchor="middle" x="93" y="-69.1" font-family="Arial" font-size="11.00">/mnt/gfs2_static</text>
+<text xml:space="preserve" text-anchor="middle" x="93" y="-55.9" font-family="Arial" font-size="11.00">Одновременный доступ</text>
+<text xml:space="preserve" text-anchor="middle" x="93" y="-42.7" font-family="Arial" font-size="11.00">с двух узлов</text>
+</g>
+<!-- be1&#45;&gt;gfs2_fs -->
+<g id="edge10" class="edge">
+<title>be1-&gt;gfs2_fs</title>
+<path fill="none" stroke="#7b1fa2" stroke-width="2" d="M588.47,-402.63C588.47,-402.63 588.47,-66 588.47,-66 588.47,-66 173.88,-66 173.88,-66"/>
+<polygon fill="#7b1fa2" stroke="#7b1fa2" stroke-width="2" points="584.97,-402.63 588.47,-412.63 591.97,-402.63 584.97,-402.63"/>
+<polygon fill="#7b1fa2" stroke="#7b1fa2" stroke-width="2" points="173.88,-62.5 163.88,-66 173.88,-69.5 173.88,-62.5"/>
+<text xml:space="preserve" text-anchor="middle" x="630.94" y="-246.28" font-family="Times,serif" font-size="14.00">чтение/</text>
+<text xml:space="preserve" text-anchor="middle" x="630.94" y="-229.47" font-family="Times,serif" font-size="14.00">запись</text>
+</g>
+<!-- pg -->
+<g id="node9" class="node">
+<title>pg</title>
+<path fill="#ce93d8" stroke="black" d="M330.01,-283.7C330.01,-288.8 301.77,-292.95 267,-292.95 232.23,-292.95 203.99,-288.8 203.99,-283.7 203.99,-283.7 203.99,-200.45 203.99,-200.45 203.99,-195.35 232.23,-191.2 267,-191.2 301.77,-191.2 330.01,-195.35 330.01,-200.45 330.01,-200.45 330.01,-283.7 330.01,-283.7"/>
+<path fill="none" stroke="black" d="M330.01,-283.7C330.01,-278.6 301.77,-274.45 267,-274.45 232.23,-274.45 203.99,-278.6 203.99,-283.7"/>
+<text xml:space="preserve" text-anchor="middle" x="267" y="-265.18" font-family="Arial" font-size="11.00">PostgreSQL 14</text>
+<text xml:space="preserve" text-anchor="middle" x="267" y="-251.97" font-family="Arial" font-size="11.00">Некластеризованная</text>
+<text xml:space="preserve" text-anchor="middle" x="267" y="-238.78" font-family="Arial" font-size="11.00">СУБД</text>
+<text xml:space="preserve" text-anchor="middle" x="267" y="-225.58" font-family="Arial" font-size="11.00">django_db</text>
+<text xml:space="preserve" text-anchor="middle" x="267" y="-212.38" font-family="Arial" font-size="11.00">.122.189</text>
+</g>
+<!-- be1&#45;&gt;pg -->
+<g id="edge8" class="edge">
+<title>be1-&gt;pg</title>
+<path fill="none" stroke="#9c27b0" d="M555.53,-415.86C555.53,-358.82 555.53,-242 555.53,-242 555.53,-242 341.83,-242 341.83,-242"/>
+<polygon fill="#9c27b0" stroke="#9c27b0" points="341.83,-238.5 331.83,-242 341.83,-245.5 341.83,-238.5"/>
+<text xml:space="preserve" text-anchor="middle" x="555.95" y="-378.47" font-family="Times,serif" font-size="14.00">SQL</text>
+<text xml:space="preserve" text-anchor="middle" x="555.95" y="-361.67" font-family="Times,serif" font-size="14.00">ORM</text>
+</g>
+<!-- be2&#45;&gt;gfs2_fs -->
+<g id="edge11" class="edge">
+<title>be2-&gt;gfs2_fs</title>
+<path fill="none" stroke="#7b1fa2" stroke-width="2" d="M352.18,-462C352.18,-462 153.54,-462 153.54,-462 153.54,-462 153.54,-118.26 153.54,-118.26"/>
+<polygon fill="#7b1fa2" stroke="#7b1fa2" stroke-width="2" points="352.18,-465.5 362.18,-462 352.18,-458.5 352.18,-465.5"/>
+<polygon fill="#7b1fa2" stroke="#7b1fa2" stroke-width="2" points="157.04,-118.26 153.54,-108.26 150.04,-118.26 157.04,-118.26"/>
+<text xml:space="preserve" text-anchor="middle" x="468.94" y="-246.28" font-family="Times,serif" font-size="14.00">чтение/</text>
+<text xml:space="preserve" text-anchor="middle" x="468.94" y="-229.47" font-family="Times,serif" font-size="14.00">запись</text>
+</g>
+<!-- be2&#45;&gt;pg -->
+<g id="edge9" class="edge">
+<title>be2-&gt;pg</title>
+<path fill="none" stroke="#9c27b0" d="M365.39,-446C332.26,-446 294.73,-446 294.73,-446 294.73,-446 294.73,-304.78 294.73,-304.78"/>
+<polygon fill="#9c27b0" stroke="#9c27b0" points="298.23,-304.78 294.73,-294.78 291.23,-304.78 298.23,-304.78"/>
+<text xml:space="preserve" text-anchor="middle" x="338.95" y="-378.47" font-family="Times,serif" font-size="14.00">SQL</text>
+<text xml:space="preserve" text-anchor="middle" x="338.95" y="-361.67" font-family="Times,serif" font-size="14.00">ORM</text>
+</g>
+<!-- iscsi -->
+<g id="node7" class="node">
+<title>iscsi</title>
+<path fill="#ce93d8" stroke="black" d="M146.48,-276.27C146.48,-280.47 118.93,-283.88 85,-283.88 51.07,-283.88 23.52,-280.47 23.52,-276.27 23.52,-276.27 23.52,-207.88 23.52,-207.88 23.52,-203.68 51.07,-200.27 85,-200.27 118.93,-200.27 146.48,-203.68 146.48,-207.88 146.48,-207.88 146.48,-276.27 146.48,-276.27"/>
+<path fill="none" stroke="black" d="M146.48,-276.27C146.48,-272.08 118.93,-268.67 85,-268.67 51.07,-268.67 23.52,-272.08 23.52,-276.27"/>
+<text xml:space="preserve" text-anchor="middle" x="85" y="-258.57" font-family="Arial" font-size="11.00">iscsi-target</text>
+<text xml:space="preserve" text-anchor="middle" x="85" y="-245.37" font-family="Arial" font-size="11.00">Блочное устройство</text>
+<text xml:space="preserve" text-anchor="middle" x="85" y="-232.17" font-family="Arial" font-size="11.00">LVM + iSCSI</text>
+<text xml:space="preserve" text-anchor="middle" x="85" y="-218.97" font-family="Arial" font-size="11.00">.122.111</text>
+</g>
+<!-- iscsi&#45;&gt;gfs2_fs -->
+<g id="edge12" class="edge">
+<title>iscsi-&gt;gfs2_fs</title>
+<path fill="none" stroke="#7b1fa2" stroke-width="2" d="M85.94,-199.85C85.94,-199.85 85.94,-121.01 85.94,-121.01"/>
+<polygon fill="#7b1fa2" stroke="#7b1fa2" stroke-width="2" points="89.44,-121.01 85.94,-111.01 82.44,-121.01 89.44,-121.01"/>
+<text xml:space="preserve" text-anchor="middle" x="112.33" y="-153.6" font-family="Times,serif" font-size="14.00">iSCSI</text>
+<text xml:space="preserve" text-anchor="middle" x="112.33" y="-136.8" font-family="Times,serif" font-size="14.00">/dev/sda</text>
+</g>
+<!-- tf -->
+<g id="node10" class="node">
+<title>tf</title>
+<polygon fill="#bdbdbd" stroke="black" points="665.09,-845.14 584.91,-845.14 584.91,-797.54 665.09,-797.54 665.09,-845.14"/>
+<text xml:space="preserve" text-anchor="middle" x="625" y="-831.24" font-family="Arial" font-size="11.00">Terraform</text>
+<text xml:space="preserve" text-anchor="middle" x="625" y="-818.04" font-family="Arial" font-size="11.00">Создание ВМ</text>
+<text xml:space="preserve" text-anchor="middle" x="625" y="-804.84" font-family="Arial" font-size="11.00">main.tf</text>
+</g>
+<!-- tf&#45;&gt;nginx1 -->
+<g id="edge13" class="edge">
+<title>tf-&gt;nginx1</title>
+<path fill="none" stroke="#616161" stroke-dasharray="1,5" d="M584.51,-821C551.13,-821 509.24,-821 509.24,-821 509.24,-821 509.24,-694.69 509.24,-694.69"/>
+<polygon fill="#616161" stroke="#616161" points="512.74,-694.69 509.24,-684.69 505.74,-694.69 512.74,-694.69"/>
+</g>
+<!-- tf&#45;&gt;be1 -->
+<g id="edge14" class="edge">
+<title>tf-&gt;be1</title>
+<path fill="none" stroke="#616161" stroke-dasharray="1,5" d="M603.17,-797.32C603.17,-797.32 603.17,-488.71 603.17,-488.71"/>
+<polygon fill="#616161" stroke="#616161" points="606.67,-488.71 603.17,-478.71 599.67,-488.71 606.67,-488.71"/>
+</g>
+<!-- ansible -->
+<g id="node11" class="node">
+<title>ansible</title>
+<polygon fill="#bdbdbd" stroke="black" points="809.15,-845.14 722.85,-845.14 722.85,-797.54 809.15,-797.54 809.15,-845.14"/>
+<text xml:space="preserve" text-anchor="middle" x="766" y="-831.24" font-family="Arial" font-size="11.00">Ansible</text>
+<text xml:space="preserve" text-anchor="middle" x="766" y="-818.04" font-family="Arial" font-size="11.00">Настройка ПО</text>
+<text xml:space="preserve" text-anchor="middle" x="766" y="-804.84" font-family="Arial" font-size="11.00">4 роли</text>
+</g>
+<!-- ansible&#45;&gt;nginx1 -->
+<g id="edge15" class="edge">
+<title>ansible-&gt;nginx1</title>
+<path fill="none" stroke="#616161" stroke-dasharray="5,2" d="M751.62,-797.33C751.62,-749.31 751.62,-646 751.62,-646 751.62,-646 551.29,-646 551.29,-646"/>
+<polygon fill="#616161" stroke="#616161" points="551.29,-642.5 541.29,-646 551.29,-649.5 551.29,-642.5"/>
+</g>
+<!-- ansible&#45;&gt;be1 -->
+<g id="edge16" class="edge">
+<title>ansible-&gt;be1</title>
+<path fill="none" stroke="#616161" stroke-dasharray="5,2" d="M780.38,-797.29C780.38,-714.45 780.38,-446 780.38,-446 780.38,-446 633.43,-446 633.43,-446"/>
+<polygon fill="#616161" stroke="#616161" points="633.43,-442.5 623.43,-446 633.43,-449.5 633.43,-442.5"/>
+</g>
+</g>
+</svg>
